@@ -1,6 +1,6 @@
-package datastructures;
+package datastructures.printitems;
 
-import static datastructures.PrintItems.printItems;
+import static datastructures.printitems.PrintItems.printItems;
 
 public class Main {
     public static void main(String[] args) {

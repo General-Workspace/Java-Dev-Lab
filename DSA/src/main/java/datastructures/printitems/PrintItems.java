@@ -1,4 +1,4 @@
-package datastructures;
+package datastructures.printitems;
 
 public class PrintItems {
     public static void printItems(int n) {
