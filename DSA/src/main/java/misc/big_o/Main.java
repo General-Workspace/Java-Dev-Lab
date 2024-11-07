@@ -1,6 +1,6 @@
-package datastructures.printitems;
+package misc.big_o;
 
-import static datastructures.printitems.PrintItems.printItems;
+import static misc.big_o.PrintItems.printItems;
 
 public class Main {
     public static void main(String[] args) {
