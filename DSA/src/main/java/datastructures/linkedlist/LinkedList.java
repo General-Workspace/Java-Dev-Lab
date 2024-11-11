@@ -5,7 +5,7 @@ public class LinkedList {
     private Node tail;
     private int length;
 
-    class Node extends Throwable {
+    class Node {
         int value;
         Node next;
 
