@@ -85,6 +85,17 @@ public class LinkedList {
         return temp;
     }
 
+    public Node get(int index) {
+        if (index < 0 || index >= length) {
+            return null;
+        }
+        Node temp = head;
+        for (int i = 0; i < index; ++i) {
+            temp = temp.next;
+        }
+        return temp;
+    }
+
     public void getHead() {
         System.out.println("Head: " + head.value);
     }

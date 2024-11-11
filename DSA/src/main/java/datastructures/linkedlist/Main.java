@@ -11,8 +11,8 @@ public class Main {
         myLinkedList1.getHead();
         myLinkedList1.getTail();
         myLinkedList1.getLength();
-        System.out.println(sep.repeat(count));
 
+        System.out.println(sep.repeat(count));
         System.out.println("Linked List: Append");
         LinkedList myLinkedList = new LinkedList(1);
         myLinkedList.append(2);
@@ -20,8 +20,13 @@ public class Main {
         myLinkedList.append(4);
 
         myLinkedList.printList();
-        System.out.println(sep.repeat(count));
 
+        System.out.println(sep.repeat(count));
+        System.out.println("Linked List: Get");
+
+        System.out.println("Get at index: " + myLinkedList.get(0).value);
+
+        System.out.println(sep.repeat(count));
         System.out.println("Linked List: Remove");
         System.out.println(myLinkedList.removeLast().value);
         System.out.println(myLinkedList.removeLast().value);
