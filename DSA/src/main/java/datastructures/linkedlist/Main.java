@@ -28,5 +28,22 @@ public class Main {
         System.out.println(myLinkedList.removeLast().value);
         System.out.println(myLinkedList.removeLast().value);
         System.out.println(myLinkedList.removeLast());
+
+        System.out.println(sep.repeat(count));
+        System.out.println("Linked List: Prepend");
+
+        LinkedList prependLinkedList = new LinkedList(3);
+        prependLinkedList.prepend(2);
+        prependLinkedList.prepend(8);
+        prependLinkedList.printList();
+
+        System.out.println(sep.repeat(count));
+        System.out.println("Linked List: Remove First");
+
+        System.out.println(prependLinkedList.removeFirst().value);
+        System.out.println(prependLinkedList.removeFirst().value);
+        System.out.println(prependLinkedList.removeFirst().value);
+        System.out.println(prependLinkedList.removeFirst());
+
     }
 }
