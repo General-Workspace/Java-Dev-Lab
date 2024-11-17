@@ -27,7 +27,7 @@ public class Main {
         System.out.println(sep.repeat(count));
         System.out.println("Linked List: Get");
 
-        System.out.println("Get at index: " + myLinkedList.get(0).value);
+        System.out.printf("\nGet at index: %d%n", myLinkedList.get(0).value);
 
         count = "Linked List: Remove".length();
         System.out.println(sep.repeat(count));
@@ -42,7 +42,7 @@ public class Main {
         System.out.println(sep.repeat(count));
         System.out.println("Linked List: Prepend");
 
-        LinkedList prependLinkedList = new LinkedList(3);
+        var prependLinkedList = new LinkedList(3);
         prependLinkedList.prepend(2);
         prependLinkedList.prepend(8);
         prependLinkedList.printList();
@@ -60,7 +60,7 @@ public class Main {
         System.out.println(sep.repeat(count));
         System.out.println("Linked List: Before Set value at an index");
 
-        LinkedList setValueAtIndex = new LinkedList(2);
+        var setValueAtIndex = new LinkedList(2);
         setValueAtIndex.append(4);
         setValueAtIndex.append(8);
         setValueAtIndex.append(16);
@@ -77,13 +77,14 @@ public class Main {
         System.out.println(sep.repeat(count));
         System.out.println("Linked List: Insert Value at an index.");
 
-        LinkedList insertValue = new LinkedList(1);
+        var insertValue = new LinkedList(1);
         insertValue.append(3);
 
         count = "Linked List: Insert Value after an index.".length();
         System.out.println(sep.repeat(count));
         System.out.println("Linked List: Insert Value after an index.");
         insertValue.insert(1, 2);
+        insertValue.insert(3, 4);
         insertValue.printList();
 
     }

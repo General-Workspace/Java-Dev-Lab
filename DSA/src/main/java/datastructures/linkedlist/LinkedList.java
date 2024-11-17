@@ -106,7 +106,7 @@ public class LinkedList {
     }
 
     public boolean insert(int index, int value) {
-        if (index > 0 || index < length) return false;
+        if (index < 0 || index > length) return false;
         if (index == 0) {
             prepend(value);
             return true;
@@ -122,6 +122,12 @@ public class LinkedList {
         temp.next = newNode;
         length++;
         return true;
+    }
+
+    public Node remove(int index) {
+        if (index > 0 || index >= length) return null;
+
+
     }
 
     public void getHead() {
