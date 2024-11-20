@@ -87,5 +87,20 @@ public class Main {
         insertValue.insert(3, 4);
         insertValue.printList();
 
+
+        count = "Linked List: Remove Value at an index.".length();
+        System.out.println(sep.repeat(count));
+        System.out.println("Linked List: Remove Value at an index.");
+
+        LinkedList removeItem = new LinkedList(11);
+        removeItem.append(3);
+        removeItem.append(23);
+        removeItem.append(7);
+        System.out.println("Added items for remove method: ");
+        removeItem.printList();
+
+        removeItem.remove(2);
+        System.out.println("List after item has been removed: ");
+        removeItem.printList();
     }
 }

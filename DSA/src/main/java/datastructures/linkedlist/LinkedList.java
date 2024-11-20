@@ -125,9 +125,16 @@ public class LinkedList {
     }
 
     public Node remove(int index) {
-        if (index > 0 || index >= length) return null;
+        if (index < 0 || index >= length) return null;
+        if (index == 0) return removeFirst();
+        if (index == length - 1) return removeLast();
 
-
+        var prev = get(index - 1);
+        var temp = prev.next;
+        prev.next = temp.next;
+        temp.next = null;
+        length--;
+        return temp;
     }
 
     public void getHead() {
