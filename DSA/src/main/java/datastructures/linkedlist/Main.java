@@ -107,10 +107,10 @@ public class Main {
         System.out.println(sep.repeat(count));
         System.out.println("Linked List: Reverse linked list");
 
-        LinkedList reverseList = new LinkedList(11);
+        LinkedList reverseList = new LinkedList(1);
+        reverseList.append(2);
         reverseList.append(3);
-        reverseList.append(23);
-        reverseList.append(7);
+        reverseList.append(4);
         System.out.println("Linked list before reversing");
         reverseList.printList();
 
