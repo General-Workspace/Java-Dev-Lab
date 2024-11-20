@@ -102,5 +102,20 @@ public class Main {
         removeItem.remove(2);
         System.out.println("List after item has been removed: ");
         removeItem.printList();
+
+        count = "Linked List: Reverse linked list".length();
+        System.out.println(sep.repeat(count));
+        System.out.println("Linked List: Reverse linked list");
+
+        LinkedList reverseList = new LinkedList(11);
+        reverseList.append(3);
+        reverseList.append(23);
+        reverseList.append(7);
+        System.out.println("Linked list before reversing");
+        reverseList.printList();
+
+        System.out.println("Linked List after reversing in place");
+        reverseList.reverse();
+        reverseList.printList();
     }
 }
