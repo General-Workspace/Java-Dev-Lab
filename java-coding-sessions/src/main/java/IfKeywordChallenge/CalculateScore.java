@@ -13,13 +13,14 @@ public class CalculateScore {
         this.bonus = bonus;
     }
 
-    public void calculateScore() {
+    public int calculateScore() {
         int finalScore = score;
 
         if (gameOver) {
             finalScore += (levelCompleted * bonus);
             finalScore += 1000;
-            System.out.printf("Your final score is %d%n", finalScore);
         }
+
+        return finalScore;
     }
 }
