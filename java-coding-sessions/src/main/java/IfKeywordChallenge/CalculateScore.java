@@ -14,10 +14,10 @@ public class CalculateScore {
     }
 
     public int calculateScore() {
-        int finalScore = score;
+        int finalScore = this.score;
 
-        if (gameOver) {
-            finalScore += (levelCompleted * bonus);
+        if (this.gameOver) {
+            finalScore += (this.levelCompleted * this.bonus);
             finalScore += 1000;
         }
 
