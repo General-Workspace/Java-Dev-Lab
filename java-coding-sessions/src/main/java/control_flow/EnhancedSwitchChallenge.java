@@ -21,11 +21,11 @@ public class EnhancedSwitchChallenge {
         } else if (day == 1) {
             return day + " is Monday";
         } else if (day == 2) {
-            return day + " is Tueday";
+            return day + " is Tuesday";
         } else if (day == 3) {
             return day + " is Wednesday";
         } else if (day == 4) {
-            return day + " is Thurday";
+            return day + " is Thursday";
         } else if (day == 5) {
             return day + " is Friday";
         } else if (day == 6) {
