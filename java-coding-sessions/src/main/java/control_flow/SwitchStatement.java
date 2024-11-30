@@ -49,7 +49,10 @@ public class SwitchStatement {
             case "April", "May", "June" -> "2nd";
             case "July", "August", "September" -> "3rd";
             case "October", "November", "December" -> "4th";
-            default -> "That is not a valid month of the year";
+            default -> {
+                //String invalidEntry = "%s is not a valid month of the year".formatted(month);
+                yield "%s is not a valid month of the year".formatted(month);
+            }
         };
     }
 }
