@@ -1,4 +1,4 @@
-package control_flow;
+package if_keyword;
 
 import java.util.Scanner;
 
