@@ -15,8 +15,8 @@ public class SwitchStatement {
             case "Wednesday":
                 System.out.println("So soon? We're half way through the week.");
                 break;
-            case "Thurday":
-                System.out.println("Let's go balling on Thurdays...");
+            case "Thursday":
+                System.out.println("Let's go balling on Thursdays...");
                 break;
             case "Friday":
                 System.out.println("Yay! Weekend approaching");
@@ -27,6 +27,19 @@ public class SwitchStatement {
             default:
                 System.out.println("What's that? That's not a day of the week...");
                 break;
+        }
+    }
+
+    public void enhancedSwitchStatement(String data) {
+        switch (data) {
+            case "Sunday" -> System.out.println("It is the first day of the week.");
+            case "Monday" -> System.out.println("The first working day of the week.");
+            case "Tuesday" -> System.out.println("Things are really picking up on Tuesdays!");
+            case "Wednesday" -> System.out.println("So soon? We're half way through the week.");
+            case "Thursday" -> System.out.println("Let's go balling on Thursdays...");
+            case "Friday" -> System.out.println("Yay! Weekend approaching");
+            case "Saturday" -> System.out.println("Weekend!!! It's social life time.");
+            default -> System.out.println("What's that? That's not a day of the week...");
         }
     }
 }
