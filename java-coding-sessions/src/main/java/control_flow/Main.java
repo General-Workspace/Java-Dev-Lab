@@ -9,8 +9,15 @@ public class Main {
         response.useSwitchStatement("Sunday");
 
         // Enhanced switch statement
+        System.out.println("************************************");
         System.out.println("Enhanced switch statement");
         response.enhancedSwitchStatement("Friday");
+
+        // Enhanced switch with return keyword
+        System.out.println("************************************");
+        System.out.println("Enhanced switch with return keyword");
+        String month = "June";
+        System.out.println(month + " is in the " + response.enhancedSwitchWithReturn(month) + " quarter of the year");
 
     }
 }
