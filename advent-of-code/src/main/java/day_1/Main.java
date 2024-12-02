@@ -9,7 +9,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-            List<List<Integer>> combinedList = readListFromFile("input_list.txt");
+            List<List<Integer>> combinedList = readListFromFile("day_1_input_list.txt");
             int[] left = combinedList.get(0).stream().mapToInt(i -> i).toArray();
             int[] right = combinedList.get(1).stream().mapToInt(i -> i).toArray();
 
