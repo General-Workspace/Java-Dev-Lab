@@ -64,12 +64,6 @@ public class Main {
     }
 
     public static int calculateTotalSimilarityScore(int[] left, int[] right) {
-//        int totalSimilarityScore = 0;
-//        for (int i = 0; i < left.length; i++) {
-//            totalSimilarityScore += Math.abs(left[i] - right[i]);
-//        }
-//        return totalSimilarityScore;
-
         Map<Integer, Integer> rightCounts = new HashMap<>();
         for (int num: right) {
             rightCounts.put(num, rightCounts.getOrDefault(num, 0) + 1);
