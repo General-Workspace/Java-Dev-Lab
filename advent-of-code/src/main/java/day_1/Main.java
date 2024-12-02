@@ -4,9 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,9 +13,13 @@ public class Main {
             int[] left = combinedList.get(0).stream().mapToInt(i -> i).toArray();
             int[] right = combinedList.get(1).stream().mapToInt(i -> i).toArray();
 
+            // calculate distance
             int distance = calculateDistance(left, right);
-
             System.out.println(distance);
+
+            // calculate similarity score
+            int similarityScore = calculateTotalSimilarityScore(left, right);
+            System.out.println(similarityScore);
     }
 
     public static int calculateDistance(int[] left, int[] right) {
@@ -59,5 +61,26 @@ public class Main {
         combinedList.add(leftList);
         combinedList.add(rightList);
         return combinedList;
+    }
+
+    public static int calculateTotalSimilarityScore(int[] left, int[] right) {
+//        int totalSimilarityScore = 0;
+//        for (int i = 0; i < left.length; i++) {
+//            totalSimilarityScore += Math.abs(left[i] - right[i]);
+//        }
+//        return totalSimilarityScore;
+
+        Map<Integer, Integer> rightCounts = new HashMap<>();
+        for (int num: right) {
+            rightCounts.put(num, rightCounts.getOrDefault(num, 0) + 1);
+        }
+
+        int similarityScore = 0;
+        for (int num: left) {
+           int count = rightCounts.getOrDefault(num, 0);
+           similarityScore += num * count;
+        }
+
+        return similarityScore;
     }
 }
