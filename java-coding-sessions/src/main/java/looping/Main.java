@@ -23,5 +23,8 @@ public class Main {
         primeResponse = primeNumberChallenge.isPrime(number) ? number + " is a prime number." : number + " " + "is not a prime number.";
         System.out.println(primeResponse);
 
+        // Prime number counter
+        System.out.println(primeNumberChallenge.primeNumberCounter(12, 37));
+
     }
 }
