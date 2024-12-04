@@ -13,6 +13,7 @@ public class Main {
 
         var input2 = sumOfNumbers_2("day_3_puzzle_input.txt");
         System.out.println("Sum of all numbers: " + input2);
+
     }
 
     public static int sumOfNumbers(String input) {
@@ -29,6 +30,8 @@ public class Main {
                     int num1 = Integer.parseInt(matcher.group(1));
                     int num2 = Integer.parseInt(matcher.group(2));
                     sum += num1 * num2;
+
+                    System.out.println(num1 + " * " + num2 + " = " + num1 * num2);
                 }
             }
         } catch (IOException e) {
@@ -40,8 +43,8 @@ public class Main {
 
     public static int sumOfNumbers_2(String input) {
         String regex = "mul[\\(\\[]?(\\d+),(\\d+)[\\)\\]]?";
-        String regex2 = "do\\(\\)";
-        String regex3 = "don't\\(\\)";
+        String doRegex = "do\\(\\)";
+        String dontRegex = "don't\\(\\)";
         int sum = 0;
         boolean isMulEnabled = true;
 
@@ -59,17 +62,17 @@ public class Main {
                     }
                 }
 
-                Pattern pattern2 = Pattern.compile(regex2);
-                Matcher matcher2 = pattern2.matcher(line);
+                Pattern doPattern = Pattern.compile(doRegex);
+                Matcher doMatcher = doPattern.matcher(line);
 
-                while (matcher2.find()) {
+                while (doMatcher.find()) {
                     isMulEnabled = true;
                 }
 
-                Pattern pattern3 = Pattern.compile(regex3);
-                Matcher matcher3 = pattern3.matcher(line);
+                Pattern dontPattern = Pattern.compile(dontRegex);
+                Matcher dontMatcher = dontPattern.matcher(line);
 
-                while (matcher3.find()) {
+                while (dontMatcher.find()) {
                     isMulEnabled = false;
                 }
             }
