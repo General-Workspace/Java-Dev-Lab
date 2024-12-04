@@ -3,6 +3,8 @@ package day_3;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,8 +13,13 @@ public class Main {
         var input = sumOfNumbers("day_3_puzzle_input.txt");
         System.out.println("Sum of all numbers: " + input);
 
-        var input2 = sumOfNumbers_2("day_3_puzzle_input.txt");
-        System.out.println("Sum of all numbers: " + input2);
+        try {
+            var corruptedMemory = new String(Files.readAllBytes(Paths.get("day_3_puzzle_input.txt")));
+            var sum = sumEnabledMulOperations(corruptedMemory);
+            System.out.println("Sum of all numbers with enabled mul operations: " + sum);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -30,8 +37,6 @@ public class Main {
                     int num1 = Integer.parseInt(matcher.group(1));
                     int num2 = Integer.parseInt(matcher.group(2));
                     sum += num1 * num2;
-
-                    System.out.println(num1 + " * " + num2 + " = " + num1 * num2);
                 }
             }
         } catch (IOException e) {
@@ -41,44 +46,32 @@ public class Main {
         return sum;
     }
 
-    public static int sumOfNumbers_2(String input) {
-        String regex = "mul[\\(\\[]?(\\d+),(\\d+)[\\)\\]]?";
-        String doRegex = "do\\(\\)";
-        String dontRegex = "don't\\(\\)";
-        int sum = 0;
-        boolean isMulEnabled = true;
+    public static int sumEnabledMulOperations(String corruptedMemory) {
+        // Regex pattern for do(), don't(), and mul(X,Y)
+        Pattern pattern = Pattern.compile("(do\\(\\)|don't\\(\\)|mul\\((\\d{1,3}),(\\d{1,3})\\))");
+        Matcher matcher = pattern.matcher(corruptedMemory);
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(input))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                Pattern pattern = Pattern.compile(regex);
-                Matcher matcher = pattern.matcher(line);
+        int totalSum = 0;
+        boolean mulEnabled = true; // mul instructions are enabled at the start
 
-                while (matcher.find()) {
-                    if (isMulEnabled) {
-                        int num1 = Integer.parseInt(matcher.group(1));
-                        int num2 = Integer.parseInt(matcher.group(2));
-                        sum += num1 * num2;
-                    }
-                }
+        // Iterate over all matches
+        while (matcher.find()) {
+            String fullMatch = matcher.group(1);
 
-                Pattern doPattern = Pattern.compile(doRegex);
-                Matcher doMatcher = doPattern.matcher(line);
-
-                while (doMatcher.find()) {
-                    isMulEnabled = true;
-                }
-
-                Pattern dontPattern = Pattern.compile(dontRegex);
-                Matcher dontMatcher = dontPattern.matcher(line);
-
-                while (dontMatcher.find()) {
-                    isMulEnabled = false;
+            if (fullMatch.equals("do()")) {
+                mulEnabled = true;
+            } else if (fullMatch.equals("don't()")) {
+                mulEnabled = false;
+            } else if (matcher.group(2) != null && matcher.group(3) != null) {
+                // This is a mul(X,Y) instruction
+                if (mulEnabled) {
+                    int num1 = Integer.parseInt(matcher.group(2));
+                    int num2 = Integer.parseInt(matcher.group(3));
+                    totalSum += num1 * num2;
                 }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
-        return sum;
+
+        return totalSum;
     }
 }
