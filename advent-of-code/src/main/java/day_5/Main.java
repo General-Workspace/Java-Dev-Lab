@@ -16,20 +16,48 @@ public class Main {
 
             int totalMiddlePageSum = 0;
             for (List<Integer> update : updates) {
-                if (isUpdateInCorrectOrder(update, pageOrderRules)) {
-                    // Find and add the middle page
-                    int middleIndex = update.size() / 2;
-                    totalMiddlePageSum += update.get(middleIndex);
-                    System.out.println("Correctly ordered update: " + update);
-                } else {
+                List<Integer> orderedUpdate;
+                if (!isUpdateInCorrectOrder(update, pageOrderRules)) {
+                    // Reorder the update
+                    orderedUpdate = correctlyOrderUpdate(update, pageOrderRules);
                     System.out.println("Incorrectly ordered update: " + update);
+                    System.out.println("Correctly ordered update: " + orderedUpdate);
+
+                    // Find and add the middle page
+                    int middleIndex = orderedUpdate.size() / 2;
+                    totalMiddlePageSum += orderedUpdate.get(middleIndex);
                 }
             }
 
-            System.out.println("Sum of middle pages of correctly ordered updates: " + totalMiddlePageSum);
+            System.out.println("Sum of middle pages of incorrectly ordered updates after reordering: " + totalMiddlePageSum);
         } catch (IOException e) {
             System.err.println("Error reading input file: " + e.getMessage());
         }
+
+//        try {
+//            // Read input from file
+//            List<String> pageOrderRules = new ArrayList<>();
+//            List<List<Integer>> updates = new ArrayList<>();
+//
+//            //readInputFile("day_5_puzzle_input.txt", pageOrderRules, updates);
+//            readInputFile("test.txt", pageOrderRules, updates);
+//
+//            int totalMiddlePageSum = 0;
+//            for (List<Integer> update : updates) {
+//                if (isUpdateInCorrectOrder(update, pageOrderRules)) {
+//                    // Find and add the middle page
+//                    int middleIndex = update.size() / 2;
+//                    totalMiddlePageSum += update.get(middleIndex);
+//                    System.out.println("Correctly ordered update: " + update);
+//                } else {
+//                    System.out.println("Incorrectly ordered update: " + update);
+//                }
+//            }
+//
+//            System.out.println("Sum of middle pages of correctly ordered updates: " + totalMiddlePageSum);
+//        } catch (IOException e) {
+//            System.err.println("Error reading input file: " + e.getMessage());
+//        }
     }
 
     public static void readInputFile(String filename,
@@ -123,57 +151,79 @@ public class Main {
         return false;
     }
 
-}
-
-/*
-public static int getMiddlePageNumber(List<Integer> pages) {
-        return pages.get(pages.size() / 2);
-    }
-
-    public static int getSumOfMiddlePageNumbers(List<List<Integer>> pages) {
-        int sum = 0;
-        for (List<Integer> page : pages) {
-            sum += getMiddlePageNumber(page);
+    // Part 2
+    private static List<Integer> topologicalSort(List<Integer> update, Map<Integer, Set<Integer>> graph) {
+        // Create a map to track in-degree (number of incoming edges)
+        Map<Integer, Integer> inDegree = new HashMap<>();
+        for (int page : update) {
+            inDegree.put(page, 0);
         }
-        return sum;
-    }
 
-    public static Map<Integer, Set<Integer>> getRules(List<String> rules) {
-        Map<Integer, Set<Integer>> map = new HashMap<>();
-        for (String rule : rules) {
-            String[] split = rule.split("\\|");
-            int key = Integer.parseInt(split[0]);
-            int value = Integer.parseInt(split[1]);
-            if (map.containsKey(key)) {
-                map.get(key).add(value);
-            } else {
-                Set<Integer> set = Set.of(value);
-                map.put(key, set);
+        // Count in-degrees
+        for (Set<Integer> deps : graph.values()) {
+            for (int dep : deps) {
+                inDegree.put(dep, inDegree.getOrDefault(dep, 0) + 1);
             }
         }
-        return map;
-    }
 
-    public static List<Integer> getCorrectlyOrderedUpdates(String update) {
-        String[] split = update.split(",");
-        List<Integer> pages = new ArrayList<>();
-        for (String s : split) {
-            pages.add(Integer.parseInt(s));
+        // Queue for pages with no incoming edges
+        Queue<Integer> queue = new LinkedList<>();
+        for (int page : update) {
+            if (inDegree.get(page) == 0) {
+                queue.offer(page);
+            }
         }
-        return pages;
-    }
 
-    public static boolean isCorrectlyOrdered(Map<Integer, Set<Integer>> rules, List<Integer> pages) {
-        for (int i = 0; i < pages.size(); i++) {
-            int page = pages.get(i);
-            if (rules.containsKey(page)) {
-                for (int j = i + 1; j < pages.size(); j++) {
-                    if (rules.get(page).contains(pages.get(j))) {
-                        return false;
+        // Result list to store sorted order
+        List<Integer> sortedOrder = new ArrayList<>();
+
+        while (!queue.isEmpty()) {
+            int currentPage = queue.poll();
+            sortedOrder.add(currentPage);
+
+            // Reduce in-degree for neighbors
+            if (graph.containsKey(currentPage)) {
+                for (int neighbor : graph.get(currentPage)) {
+                    inDegree.put(neighbor, inDegree.get(neighbor) - 1);
+                    if (inDegree.get(neighbor) == 0) {
+                        queue.offer(neighbor);
                     }
                 }
             }
         }
-        return true;
+
+        // If we couldn't sort all pages, add remaining pages
+        Set<Integer> sortedPages = new HashSet<>(sortedOrder);
+        for (int page : update) {
+            if (!sortedPages.contains(page)) {
+                sortedOrder.add(page);
+            }
+        }
+
+        return sortedOrder;
     }
- */
+
+    public static List<Integer> correctlyOrderUpdate(List<Integer> update, List<String> pageOrderRules) {
+        // Create a set of initial pages
+        Set<Integer> allPages = new HashSet<>(update);
+
+        // Create a directed graph of page dependencies
+        Map<Integer, Set<Integer>> graph = new HashMap<>();
+
+        // Build graph based on the rules for pages in this update
+        for (String rule : pageOrderRules) {
+            String[] parts = rule.split("\\|");
+            int before = Integer.parseInt(parts[0]);
+            int after = Integer.parseInt(parts[1]);
+
+            // Only consider rules where both pages are in the current update
+            if (update.contains(before) && update.contains(after)) {
+                graph.computeIfAbsent(before, k -> new HashSet<>()).add(after);
+            }
+        }
+
+        // Topological sort
+        return topologicalSort(update, graph);
+    }
+
+}
