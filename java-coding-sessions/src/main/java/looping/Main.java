@@ -26,5 +26,11 @@ public class Main {
         // Prime number counter
         System.out.println(primeNumberChallenge.primeNumberCounter(12, 37));
 
+        // Sum 3 and 5 Challenge
+        System.out.println("******************************************");
+        Sum3And5Challenge sum3And5Challenge = new Sum3And5Challenge();
+        var sum = sum3And5Challenge.sumNumbers(1, 1000);
+        System.out.println(sum);
+
     }
 }
