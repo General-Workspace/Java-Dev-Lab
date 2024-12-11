@@ -2,8 +2,8 @@ package while_loops;
 
 public class Main {
     public static void main(String[] args) {
-        ReadUserInputChallenge userInput = new ReadUserInputChallenge();
-        userInput.readUserInput();
+//        ReadUserInputChallenge userInput = new ReadUserInputChallenge();
+//        userInput.readUserInput();
 
 //        WhileLoopChallenge solution = new WhileLoopChallenge();
 //        solution.printEvenNumbers(5, 20);
@@ -15,5 +15,9 @@ public class Main {
 //
 //        var output2 = sum.sumDigitsUsingString(125);
 //        System.out.println("Sum of digits: " + output2);
+
+        MinMaxChallenge minMax = new MinMaxChallenge();
+        //minMax.minMax();
+        minMax.minMax2();
     }
 }

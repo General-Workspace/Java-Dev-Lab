@@ -1,6 +1,5 @@
 package while_loops;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ReadUserInputChallenge {
