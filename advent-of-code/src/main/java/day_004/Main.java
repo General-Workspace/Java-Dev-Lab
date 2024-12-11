@@ -1,4 +1,4 @@
-package day_4;
+package day_004;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,8 +8,8 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        // Read input from a file called day_4_puzzle_input.txt
-        try (BufferedReader br = new BufferedReader(new FileReader("day_4_puzzle_input.txt"))) {
+        // Read input from a file called day_004_puzzle_input.txt
+        try (BufferedReader br = new BufferedReader(new FileReader("day_004_puzzle_input.txt"))) {
             String line;
             List<String> lines = new ArrayList<>();
             while ((line = br.readLine()) != null) {

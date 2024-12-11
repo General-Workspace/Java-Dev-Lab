@@ -1,4 +1,4 @@
-package day_7;
+package day_007;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -10,7 +10,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         // Update filePath with the input file location
-        String filePath = "day_7_input_list.txt"; // Change this to your actual input file
+        String filePath = "day_007_input_list.txt"; // Change this to your actual input file
 
         // Parse the input
         List<TestCase> testCases = parseInput(filePath);

@@ -1,11 +1,11 @@
-package day_10;
+package day_010;
 
 import java.io.*;
         import java.nio.file.*;
         import java.util.*;
 
 public class Main {
-    static final String INPUT_FILE = "input_list/day_10_puzzle_input.txt";
+    static final String INPUT_FILE = "input_list/day_010_puzzle_input.txt";
 
     public static void main(String[] args) throws IOException {
         long startTimePart1 = System.nanoTime();
@@ -165,7 +165,7 @@ public class Main {
 //public class Main {
 //
 //    public static void main(String[] args) throws IOException {
-//        int[][] map = readMap("input_list/day_10_puzzle_input.txt");
+//        int[][] map = readMap("input_list/day_010_puzzle_input.txt");
 //
 //        // Part 1
 //        int totalScore = 0;

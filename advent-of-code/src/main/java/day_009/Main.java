@@ -1,4 +1,4 @@
-package day_9;
+package day_009;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -310,7 +310,7 @@ public class Main {
         var startTotal = System.nanoTime();
 
         // Read input from file
-        var diskMap = Files.readString(Path.of("day_9_puzzle_input.txt")).strip();
+        var diskMap = Files.readString(Path.of("day_009_puzzle_input.txt")).strip();
 
         // Parse the disk map
         var startPart1 = System.nanoTime();

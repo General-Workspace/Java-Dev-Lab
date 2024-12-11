@@ -1,4 +1,4 @@
-package day_3;
+package day_003;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -10,11 +10,11 @@ import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) {
-        var input = sumOfNumbers("day_3_puzzle_input.txt");
+        var input = sumOfNumbers("day_003_puzzle_input.txt");
         System.out.println("Sum of all numbers: " + input);
 
         try {
-            var corruptedMemory = new String(Files.readAllBytes(Paths.get("day_3_puzzle_input.txt")));
+            var corruptedMemory = new String(Files.readAllBytes(Paths.get("day_003_puzzle_input.txt")));
             var sum = sumEnabledMulOperations(corruptedMemory);
             System.out.println("Sum of all numbers with enabled mul operations: " + sum);
         } catch (IOException e) {

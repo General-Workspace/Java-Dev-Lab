@@ -1,4 +1,4 @@
-package day_6;
+package day_006;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,7 +10,7 @@ import java.util.Set;
 public class Main {
     public static void main(String[] args) {
         try {
-            String[] map = readMapFromFile("day_6_puzzle_input.txt");
+            String[] map = readMapFromFile("day_006_puzzle_input.txt");
             // Part 1
             int visitedPositions = countVisitedPositions(map);
 

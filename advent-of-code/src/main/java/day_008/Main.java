@@ -1,4 +1,4 @@
-package day_8;
+package day_008;
 
 import java.io.*;
 import java.util.*;
@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         try {
             // Part 1
-            char[][] map = loadMapFromFile("day_8_puzzle_input.txt");
+            char[][] map = loadMapFromFile("day_008_puzzle_input.txt");
             Map<Character, List<int[]>> antennaMap = extractAntennas(map);
             Set<String> uniqueAntinodes = calculateUniqueAntinodes(antennaMap, map.length, map[0].length);
             System.out.println("Part 1: Number of unique antinode locations: " + uniqueAntinodes.size());

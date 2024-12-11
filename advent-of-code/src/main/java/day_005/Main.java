@@ -1,4 +1,4 @@
-package day_5;
+package day_005;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,7 +12,7 @@ public class Main {
             List<String> pageOrderRules = new ArrayList<>();
             List<List<Integer>> updates = new ArrayList<>();
 
-            readInputFile("day_5_puzzle_input.txt", pageOrderRules, updates);
+            readInputFile("day_005_puzzle_input.txt", pageOrderRules, updates);
 
             int totalMiddlePageSum = 0;
             for (List<Integer> update : updates) {
@@ -39,7 +39,7 @@ public class Main {
 //            List<String> pageOrderRules = new ArrayList<>();
 //            List<List<Integer>> updates = new ArrayList<>();
 //
-//            //readInputFile("day_5_puzzle_input.txt", pageOrderRules, updates);
+//            //readInputFile("day_005_puzzle_input.txt", pageOrderRules, updates);
 //            readInputFile("test.txt", pageOrderRules, updates);
 //
 //            int totalMiddlePageSum = 0;

@@ -1,4 +1,4 @@
-package day_2;
+package day_002;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException {
         // Read input from file
-        Scanner scanner = new Scanner(new File("day_2_input_list.txt"));
+        Scanner scanner = new Scanner(new File("day_002_puzzle_input.txt"));
         List<String> reports = new ArrayList<>();
 
         while (scanner.hasNextLine()) {
