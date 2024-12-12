@@ -23,10 +23,17 @@ public class Main {
         try {
             char[][] gardenMap = readGardenMap("input_list/day_012_puzzle_input.txt");
             var totalPrice = calculateTotalPrice(gardenMap);
-            var totalPriceUsingSides = calculateTotalPriceUsingSides(gardenMap);
+            var grid = new HashMap<Complex, Character>();
+            for (int i = 0; i < gardenMap.length; i++) {
+                for (int j = 0; j < gardenMap[i].length; j++) {
+                    grid.put(new Complex(i, j), gardenMap[i][j]);
+                }
+            }
+            var totalPriceUsingSides = calculateTotalPriceUsingSides(grid);
 
             System.out.printf("Total Price: %d%n", totalPrice);
-            System.out.printf("Total Price Using Sides: %d%n", totalPriceUsingSides);
+            System.out.printf("Total Price using sides: %d%n", totalPriceUsingSides);
+
         } catch (IOException e) {
             System.err.printf("Error reading the file: %s%n", e.getMessage());
         }
@@ -107,59 +114,143 @@ public class Main {
      * Part 2
      */
 
-    private static Region calculateRegionUsingSides(char[][] map, boolean[][] visited, int startRow, int startCol, char plantType) {
-        int area = 0;
-        int sides = 0;
-        int rows = map.length;
-        int cols = map[0].length;
+    static Set<Complex> floodFill(Map<Complex, Character> grid, Complex start) {
+        Set<Complex> region = new HashSet<>();
+        char symbol = grid.get(start);
+        Queue<Complex> queue = new LinkedList<>();
 
-        Queue<int[]> queue = new LinkedList<>();
-        queue.add(new int[]{startRow, startCol});
-        visited[startRow][startCol] = true;
+        region.add(start);
+        queue.add(start);
 
         while (!queue.isEmpty()) {
-            int[] cell = queue.poll();
-            int row = cell[0];
-            int col = cell[1];
-            area++;
+            Complex pos = queue.poll();
 
-            for (int[] dir : directions) {
-                int newRow = row + dir[0];
-                int newCol = col + dir[1];
+            for (Complex d : Arrays.asList(
+                    new Complex(1, 0), new Complex(-1, 0),
+                    new Complex(0, 1), new Complex(0, -1))) {
+                Complex newPos = pos.add(d);
 
-                if (newRow < 0 || newRow >= rows || newCol < 0 || newCol >= cols || map[newRow][newCol] != plantType) {
-                    // Out of bounds or different plant type, count as side
-                    sides++;
-                } else if (!visited[newRow][newCol]) {
-                    // Same plant type and not visited
-                    visited[newRow][newCol] = true;
-                    queue.add(new int[]{newRow, newCol});
+                if (grid.containsKey(newPos) &&
+                        !region.contains(newPos) &&
+                        grid.get(newPos) == symbol) {
+                    region.add(newPos);
+                    queue.add(newPos);
+                }
+            }
+        }
+        return region;
+    }
+
+    static int getArea(Set<Complex> region) {
+        return region.size();
+    }
+
+    static int getSideCount(Set<Complex> region) {
+        Set<String> perimeterEdges = new HashSet<>();
+
+        for (Complex pos : region) {
+            for (Complex direction : Arrays.asList(
+                    new Complex(1, 0), new Complex(-1, 0),
+                    new Complex(0, 1), new Complex(0, -1))) {
+                Complex newPos = pos.add(direction);
+                if (!region.contains(newPos)) {
+                    perimeterEdges.add(pos + "|" + direction);
                 }
             }
         }
 
-        return new Region(area, 0, sides); // Perimeter not used here
-    }
+        int distinctSides = 0;
 
-    private static int calculateTotalPriceUsingSides(char[][] gardenMap) {
-        int totalPrice = 0;
-        int rows = gardenMap.length;
-        int cols = gardenMap[0].length;
-        boolean[][] visited = new boolean[rows][cols];
+        while (!perimeterEdges.isEmpty()) {
+            Iterator<String> iterator = perimeterEdges.iterator();
+            String edge = iterator.next();
+            iterator.remove();
+            distinctSides++;
 
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                if (!visited[i][j]) {
-                    char plantType = gardenMap[i][j];
-                    Region region = calculateRegionUsingSides(gardenMap, visited, i, j, plantType);
-                    int price = region.area * region.sides;
-                    totalPrice += price;
-                    System.out.printf("A region of %c plants with price %d * %d = %d.%n", plantType, region.area, region.sides, price);
-                }
+            String[] parts = edge.split("\\|");
+            Complex pos = Complex.fromString(parts[0]);
+            Complex direction = Complex.fromString(parts[1]);
+
+            Complex nextPos = pos.add(direction.multiply(new Complex(0, 1)));
+            while (perimeterEdges.remove(nextPos + "|" + direction)) {
+                nextPos = nextPos.add(direction.multiply(new Complex(0, 1)));
+            }
+
+            nextPos = pos.add(direction.multiply(new Complex(0, -1)));
+            while (perimeterEdges.remove(nextPos + "|" + direction)) {
+                nextPos = nextPos.add(direction.multiply(new Complex(0, -1)));
             }
         }
 
-        //System.out.printf("Total Price Using Sides: %d%n", totalPrice);
-        return totalPrice;
+        return distinctSides;
     }
+
+    static int calculateTotalPriceUsingSides(Map<Complex, Character> grid) {
+        List<Map.Entry<Character, Set<Complex>>> regions = new ArrayList<>();
+        Set<Complex> unexplored = new HashSet<>(grid.keySet());
+
+        while (!unexplored.isEmpty()) {
+            Iterator<Complex> iterator = unexplored.iterator();
+            Complex start = iterator.next();
+            iterator.remove();
+
+            Set<Complex> region = floodFill(grid, start);
+            unexplored.removeAll(region);
+            regions.add(Map.entry(grid.get(start), region));
+        }
+
+        int price = 0;
+        for (Map.Entry<Character, Set<Complex>> region : regions) {
+            int area = getArea(region.getValue());
+            int perimeter = getSideCount(region.getValue());
+            price += area * perimeter;
+        }
+
+        return price;
+    }
+
+    static class Complex {
+        int real, imag;
+
+        Complex(int real, int imag) {
+            this.real = real;
+            this.imag = imag;
+        }
+
+        Complex add(Complex other) {
+            return new Complex(this.real + other.real, this.imag + other.imag);
+        }
+
+        Complex multiply(Complex other) {
+            return new Complex(
+                    this.real * other.real - this.imag * other.imag,
+                    this.real * other.imag + this.imag * other.real);
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) return true;
+            if (obj == null || getClass() != obj.getClass()) return false;
+            Complex complex = (Complex) obj;
+            return real == complex.real && imag == complex.imag;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(real, imag);
+        }
+
+        @Override
+        public String toString() {
+            return real + "+" + imag + "i";
+        }
+
+        static Complex fromString(String str) {
+            String[] parts = str.split("\\+");
+            int real = Integer.parseInt(parts[0]);
+            int imag = Integer.parseInt(parts[1].replace("i", ""));
+            return new Complex(real, imag);
+        }
+    }
+
 }
