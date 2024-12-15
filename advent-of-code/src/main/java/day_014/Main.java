@@ -76,7 +76,7 @@ public class Main {
                 robots.add(new Robot(x, y, vx, vy));
             }
         } catch (IOException e) {
-            System.err.println("Error reading the file: " + e.getMessage());
+            System.err.printf("Error reading the file: %s%n", e.getMessage());
             return null;
         }
         return robots;
@@ -104,15 +104,15 @@ public class Main {
             }
         }
         System.out.println("Robots in each quadrant:");
-        System.out.println("Top-left: " + quadrantCounts[1]);
-        System.out.println("Top-right: " + quadrantCounts[2]);
-        System.out.println("Bottom-left: " + quadrantCounts[3]);
-        System.out.println("Bottom-right: " + quadrantCounts[4]);
+        System.out.printf("Top-left: %d%n", quadrantCounts[1]);
+        System.out.printf("Top-right: %d%n", quadrantCounts[2]);
+        System.out.printf("Bottom-left: %d%n", quadrantCounts[3]);
+        System.out.printf("Bottom-right: %d%n", quadrantCounts[4]);
         return quadrantCounts[1] * quadrantCounts[2] * quadrantCounts[3] * quadrantCounts[4];
     }
 
     private static void displaySafetyFactor(int safetyFactor) {
-        System.out.println("Safety Factor: " + safetyFactor);
+        System.out.printf("Safety Factor: %d%n", safetyFactor);
     }
 }
 
