@@ -1,0 +1,387 @@
+It's time again for the Reindeer Olympics! This year, the big event is the Reindeer Maze, where the Reindeer compete for the lowest score.
+
+You and The Historians arrive to search for the Chief right as the event is about to start. It wouldn't hurt to watch a little, right?
+
+The Reindeer start on the Start Tile (marked S) facing East and need to reach the End Tile (marked E). They can move forward one tile at a time (increasing their score by 1 point), but never into a wall (#). They can also rotate clockwise or counterclockwise 90 degrees at a time (increasing their score by 1000 points).
+
+To figure out the best place to sit, you start by grabbing a map (your puzzle input) from a nearby kiosk. For example:
+
+###############
+#.......#....E#
+#.#.###.#.###.#
+#.....#.#...#.#
+#.###.#####.#.#
+#.#.#.......#.#
+#.#.#####.###.#
+#...........#.#
+###.#.#####.#.#
+#...#.....#.#.#
+#.#.#.###.#.#.#
+#.....#...#.#.#
+#.###.#.#.#.#.#
+#S..#.....#...#
+###############
+There are many paths through this maze, but taking any of the best paths would incur a score of only 7036. This can be achieved by taking a total of 36 steps forward and turning 90 degrees a total of 7 times:
+
+
+###############
+#.......#....E#
+#.#.###.#.###^#
+#.....#.#...#^#
+#.###.#####.#^#
+#.#.#.......#^#
+#.#.#####.###^#
+#..>>>>>>>>v#^#
+###^#.#####v#^#
+#>>^#.....#v#^#
+#^#.#.###.#v#^#
+#^....#...#v#^#
+#^###.#.#.#v#^#
+#S..#.....#>>^#
+###############
+Here's a second example:
+
+#################
+#...#...#...#..E#
+#.#.#.#.#.#.#.#.#
+#.#.#.#...#...#.#
+#.#.#.#.###.#.#.#
+#...#.#.#.....#.#
+#.#.#.#.#.#####.#
+#.#...#.#.#.....#
+#.#.#####.#.###.#
+#.#.#.......#...#
+#.#.###.#####.###
+#.#.#...#.....#.#
+#.#.#.#####.###.#
+#.#.#.........#.#
+#.#.#.#########.#
+#S#.............#
+#################
+In this maze, the best paths cost 11048 points; following one such path would look like this:
+
+#################
+#...#...#...#..E#
+#.#.#.#.#.#.#.#^#
+#.#.#.#...#...#^#
+#.#.#.#.###.#.#^#
+#>>v#.#.#.....#^#
+#^#v#.#.#.#####^#
+#^#v..#.#.#>>>>^#
+#^#v#####.#^###.#
+#^#v#..>>>>^#...#
+#^#v###^#####.###
+#^#v#>>^#.....#.#
+#^#v#^#####.###.#
+#^#v#^........#.#
+#^#v#^#########.#
+#S#>>^..........#
+#################
+Note that the path shown above includes one 90 degree turn as the very first move, rotating the Reindeer from facing East to facing North.
+
+Analyze your map carefully. What is the lowest score a Reindeer could possibly get?
+
+
+
+--- Part Two ---
+Now that you know what the best paths look like, you can figure out the best spot to sit.
+
+Every non-wall tile (S, ., or E) is equipped with places to sit along the edges of the tile. While determining which of these tiles would be the best spot to sit depends on a whole bunch of factors (how comfortable the seats are, how far away the bathrooms are, whether there's a pillar blocking your view, etc.), the most important factor is whether the tile is on one of the best paths through the maze. If you sit somewhere else, you'd miss all the action!
+
+So, you'll need to determine which tiles are part of any best path through the maze, including the S and E tiles.
+
+In the first example, there are 45 tiles (marked O) that are part of at least one of the various best paths through the maze:
+
+###############
+#.......#....O#
+#.#.###.#.###O#
+#.....#.#...#O#
+#.###.#####.#O#
+#.#.#.......#O#
+#.#.#####.###O#
+#..OOOOOOOOO#O#
+###O#O#####O#O#
+#OOO#O....#O#O#
+#O#O#O###.#O#O#
+#OOOOO#...#O#O#
+#O###.#.#.#O#O#
+#O..#.....#OOO#
+###############
+In the second example, there are 64 tiles that are part of at least one of the best paths:
+
+#################
+#...#...#...#..O#
+#.#.#.#.#.#.#.#O#
+#.#.#.#...#...#O#
+#.#.#.#.###.#.#O#
+#OOO#.#.#.....#O#
+#O#O#.#.#.#####O#
+#O#O..#.#.#OOOOO#
+#O#O#####.#O###O#
+#O#O#..OOOOO#OOO#
+#O#O###O#####O###
+#O#O#OOO#..OOO#.#
+#O#O#O#####O###.#
+#O#O#OOOOOOO..#.#
+#O#O#O#########.#
+#O#OOO..........#
+#################
+Analyze your map further. How many tiles are part of at least one of the best paths through the maze?
+
+
+//public class Main {
+//    private static final int INF = Integer.MAX_VALUE;
+//    private static final int[][] DIRECTIONS = {
+//            {0, 1},   // East
+//            {1, 0},   // South
+//            {0, -1},  // West
+//            {-1, 0}   // North
+//    };
+//
+//
+//    public static void main(String[] args) {
+//        try {
+//            List<String> mazeLines = readMaze("input_list/day_016_puzzle_input.txt");
+//
+//            int minimumCost = findMinimumCost(mazeLines);
+//            System.out.printf("Part 1 - Lowest possible score: %d%n", minimumCost);
+//
+//            int bestPathTiles = findBestPathMaze(mazeLines);
+//            System.out.printf("Part 2 - Number of tiles on at least one best path: %d%n", bestPathTiles);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    public static List<String> readMaze(String filePath) throws IOException {
+//        List<String> lines = new ArrayList<>();
+//        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+//            String line;
+//            while ((line = br.readLine()) != null) {
+//                lines.add(line.trim());
+//            }
+//        }
+//        return lines;
+//    }
+//
+//    /**
+//     * Part 1 - Find the minimum cost to reach the end position.
+//     * @param mazeLines List of strings representing the maze
+//     * @return Minimum cost to reach the end position
+//     */
+//    public static int findMinimumCost(List<String> mazeLines) {
+//
+//        int rows = mazeLines.size();
+//        int cols = mazeLines.getFirst().length();
+//        int[] start = null, end = null;
+//
+//        // Locate start and end positions
+//        for (int r = 0; r < rows; r++) {
+//            for (int c = 0; c < cols; c++) {
+//                char ch = mazeLines.get(r).charAt(c);
+//                if (ch == 'S') {
+//                    start = new int[]{r, c};
+//                } else if (ch == 'E') {
+//                    end = new int[]{r, c};
+//                }
+//            }
+//        }
+//
+//        if (start == null || end == null) {
+//            throw new IllegalArgumentException("Could not find 'S' or 'E' in the maze.");
+//        }
+//
+//        int[][][] dist = new int[rows][cols][4];
+//        for (int[][] layer : dist) {
+//            for (int[] row : layer) {
+//                Arrays.fill(row, INF);
+//            }
+//        }
+//
+//        PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[0]));
+//        dist[start[0]][start[1]][0] = 0;
+//        pq.offer(new int[]{0, start[0], start[1], 0}); // cost, row, col, direction
+//        Set<String> visited = new HashSet<>();
+//
+//        while (!pq.isEmpty()) {
+//            int[] current = pq.poll();
+//            int cost = current[0], r = current[1], c = current[2], d = current[3];
+//
+//            if (r == end[0] && c == end[1]) {
+//                return cost;
+//            }
+//
+//            String stateKey = r + "," + c + "," + d;
+//            if (visited.contains(stateKey)) continue;
+//            visited.add(stateKey);
+//
+//            // Move forward
+//            int nr = r + DIRECTIONS[d][0];
+//            int nc = c + DIRECTIONS[d][1];
+//            if (nr >= 0 && nr < rows && nc >= 0 && nc < cols && mazeLines.get(nr).charAt(nc) != '#') {
+//                int newCost = cost + 1;
+//                if (newCost < dist[nr][nc][d]) {
+//                    dist[nr][nc][d] = newCost;
+//                    pq.offer(new int[]{newCost, nr, nc, d});
+//                }
+//            }
+//
+//            // Turn left
+//            int leftDir = (d + 3) % 4; // equivalent to (d - 1) % 4
+//            int leftCost = cost + 1000;
+//            if (leftCost < dist[r][c][leftDir]) {
+//                dist[r][c][leftDir] = leftCost;
+//                pq.offer(new int[]{leftCost, r, c, leftDir});
+//            }
+//
+//            // Turn right
+//            int rightDir = (d + 1) % 4;
+//            int rightCost = cost + 1000;
+//            if (rightCost < dist[r][c][rightDir]) {
+//                dist[r][c][rightDir] = rightCost;
+//                pq.offer(new int[]{rightCost, r, c, rightDir});
+//            }
+//        }
+//
+//        return -1; // No path found
+//    }
+//
+//
+//    /**
+//     * Part 2 - Find the number of tiles on at least one best path from start to end.
+//     * @param mazeLines List of strings representing the maze
+//     * @return Number of tiles on at least one best path
+//     */
+//    public static int findBestPathMaze(List<String> mazeLines) {
+//        int[][] directions = {
+//                {0, 1},   // East
+//                {1, 0},   // South
+//                {0, -1},  // West
+//                {-1, 0}   // North
+//        };
+//
+//        int rows = mazeLines.size();
+//        int cols = mazeLines.get(0).length();
+//        int[] start = null, end = null;
+//
+//        // Locate start and end positions
+//        for (int r = 0; r < rows; r++) {
+//            for (int c = 0; c < cols; c++) {
+//                char ch = mazeLines.get(r).charAt(c);
+//                if (ch == 'S') {
+//                    start = new int[]{r, c};
+//                } else if (ch == 'E') {
+//                    end = new int[]{r, c};
+//                }
+//            }
+//        }
+//
+//        if (start == null || end == null) {
+//            throw new IllegalArgumentException("Could not find 'S' or 'E' in the maze.");
+//        }
+//
+//        int[][][] dist = new int[rows][cols][4];
+//        for (int[][] layer : dist) {
+//            for (int[] row : layer) {
+//                Arrays.fill(row, INF);
+//            }
+//        }
+//
+//        PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[0]));
+//        dist[start[0]][start[1]][0] = 0;
+//        pq.offer(new int[]{0, start[0], start[1], 0}); // cost, row, col, direction
+//        Set<String> visited = new HashSet<>();
+//
+//        while (!pq.isEmpty()) {
+//            int[] current = pq.poll();
+//            int cost = current[0], r = current[1], c = current[2], d = current[3];
+//
+//            String stateKey = r + "," + c + "," + d;
+//            if (visited.contains(stateKey)) continue;
+//            visited.add(stateKey);
+//
+//            // Move forward
+//            int nr = r + directions[d][0];
+//            int nc = c + directions[d][1];
+//            if (nr >= 0 && nr < rows && nc >= 0 && nc < cols && mazeLines.get(nr).charAt(nc) != '#') {
+//                int newCost = cost + 1;
+//                if (newCost < dist[nr][nc][d]) {
+//                    dist[nr][nc][d] = newCost;
+//                    pq.offer(new int[]{newCost, nr, nc, d});
+//                }
+//            }
+//
+//            // Turn left
+//            int leftDir = (d + 3) % 4;
+//            int leftCost = cost + 1000;
+//            if (leftCost < dist[r][c][leftDir]) {
+//                dist[r][c][leftDir] = leftCost;
+//                pq.offer(new int[]{leftCost, r, c, leftDir});
+//            }
+//
+//            // Turn right
+//            int rightDir = (d + 1) % 4;
+//            int rightCost = cost + 1000;
+//            if (rightCost < dist[r][c][rightDir]) {
+//                dist[r][c][rightDir] = rightCost;
+//                pq.offer(new int[]{rightCost, r, c, rightDir});
+//            }
+//        }
+//
+//        // Trace back the best path
+//        int minCostEnd = Arrays.stream(dist[end[0]][end[1]]).min().orElse(INF);
+//        if (minCostEnd == INF) {
+//            return 0;
+//        }
+//
+//        boolean[][] onBestPath = new boolean[rows][cols];
+//        Queue<int[]> queue = new ArrayDeque<>();
+//        for (int d = 0; d < 4; d++) {
+//            if (dist[end[0]][end[1]][d] == minCostEnd) {
+//                queue.offer(new int[]{end[0], end[1], d});
+//            }
+//        }
+//        Set<String> visitedReverse = new HashSet<>();
+//
+//        while (!queue.isEmpty()) {
+//            int[] current = queue.poll();
+//            int r = current[0], c = current[1], d = current[2];
+//            onBestPath[r][c] = true;
+//
+//            int costHere = dist[r][c][d];
+//
+//            // Reverse move forward
+//            int nr = r - directions[d][0];
+//            int nc = c - directions[d][1];
+//            if (nr >= 0 && nr < rows && nc >= 0 && nc < cols) {
+//                if (mazeLines.get(nr).charAt(nc) != '#' && dist[nr][nc][d] == costHere - 1) {
+//                    String reverseKey = nr + "," + nc + "," + d;
+//                    if (!visitedReverse.contains(reverseKey)) {
+//                        visitedReverse.add(reverseKey);
+//                        queue.offer(new int[]{nr, nc, d});
+//                    }
+//                }
+//            }
+//
+//            // Reverse turns
+//            for (int prevDir : new int[]{(d + 3) % 4, (d + 1) % 4}) {
+//                if (dist[r][c][prevDir] == costHere - 1000) {
+//                    String reverseKey = r + "," + c + "," + prevDir;
+//                    if (!visitedReverse.contains(reverseKey)) {
+//                        visitedReverse.add(reverseKey);
+//                        queue.offer(new int[]{r, c, prevDir});
+//                    }
+//                }
+//            }
+//        }
+//
+//        int tilesOnBestPath = 0;
+//        for (int r = 0; r < rows; r++) {
+//            for (int c = 0; c < cols; c++) {
+//                if (onBestPath[r][c]) tilesOnBestPath++;
+//            }
+//        }
+//
+//        return tilesOnBestPath;
+//    }
+//}
