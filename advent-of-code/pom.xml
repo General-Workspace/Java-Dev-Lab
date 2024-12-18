@@ -17,8 +17,8 @@
     <dependencies>
         <dependency>
             <groupId>org.jgrapht</groupId>
-            <artifactId>jgrapht</artifactId>
-            <version>1.5.2</version>
+            <artifactId>jgrapht-core</artifactId>
+            <version>1.5.1</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
