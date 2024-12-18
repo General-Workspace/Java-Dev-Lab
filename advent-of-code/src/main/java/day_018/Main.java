@@ -35,16 +35,22 @@ public class Main {
 
         for (int i = 0; i < nodes.size(); i++) {
             int[] p = nodes.get(i);
-            String node = p[0] + "," + p[1];
+            String node = "%d,%d".formatted(p[0], p[1]);
             grid.removeVertex(node);
 
             if (i == 1023) {
                 // Part 1
+                long startTime = System.currentTimeMillis();
                 DijkstraShortestPath<String, DefaultEdge> dijkstraAlg = new DijkstraShortestPath<>(grid);
-                System.out.println("Part 1: " + dijkstraAlg.getPath("0,0", "70,70").getLength());
+                long endTime = System.currentTimeMillis();
+                System.out.printf("Part 1: %d%n", dijkstraAlg.getPath("0,0", "70,70").getLength());
+                System.out.printf("Time taken for Part 1: %d ms%n", endTime - startTime);
             } else if (!hasPath(grid, "0,0", "70,70")) {
                 // Part 2
-                System.out.println("Part 2: " + p[0] + "," + p[1]);
+                long startTime = System.currentTimeMillis();
+                System.out.printf("Part 2: %d,%d%n", p[0], p[1]);
+                long endTime = System.currentTimeMillis();
+                System.out.printf("Time taken for Part 2: %d ms%n", endTime - startTime);
                 break;
             }
         }
@@ -54,13 +60,13 @@ public class Main {
         Graph<String, DefaultEdge> grid = new SimpleGraph<>(DefaultEdge.class);
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-                String node = x + "," + y;
+                String node = "%d,%d".formatted(x, y);
                 grid.addVertex(node);
                 if (x > 0) {
-                    grid.addEdge(node, (x - 1) + "," + y);
+                    grid.addEdge(node, "%d,%d".formatted(x - 1, y));
                 }
                 if (y > 0) {
-                    grid.addEdge(node, x + "," + (y - 1));
+                    grid.addEdge(node, "%d,%d".formatted(x, y - 1));
                 }
             }
         }
