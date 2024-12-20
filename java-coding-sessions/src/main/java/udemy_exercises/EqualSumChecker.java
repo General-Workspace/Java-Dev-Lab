@@ -23,4 +23,13 @@ NOTE: Do not add a  main method to solution code.
  */
 
 public class EqualSumChecker {
+    public static void main(String[] args) {
+        System.out.println(hasEqualSum(1, 1, 1));
+        System.out.println(hasEqualSum(1, 1, 2));
+        System.out.println(hasEqualSum(1, -1, 0));
+        System.out.println(hasEqualSum(4, 5, 9));
+    }
+    public static boolean hasEqualSum(int x, int y, int z) {
+        return x + y == z;
+    }
 }

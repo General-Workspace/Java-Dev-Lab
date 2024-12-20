@@ -48,4 +48,21 @@ The solution will not be accepted if there are extra spaces
  */
 
 public class MinutesToYearsDaysCalculator {
+    public static void main(String[] ignoredArgs) {
+        printYearsAndDays(525600);
+        printYearsAndDays(1051200);
+        printYearsAndDays(561600);
+    }
+    public static void printYearsAndDays(long minutes) {
+        if (minutes < 0) {
+            System.out.println("Invalid Value");
+            return;
+        }
+        var hours = minutes / 60;
+        var days = hours / 24;
+        var years = days / 365;
+        var remainingDays = days % 365;
+
+        System.out.printf("%d min = %d y and %d d%n", minutes, years, remainingDays);
+    }
 }
