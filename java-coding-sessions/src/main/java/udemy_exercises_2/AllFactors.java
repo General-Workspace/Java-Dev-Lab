@@ -42,4 +42,23 @@ NOTE: Do not add a main method to the solution code.
  */
 
 public class AllFactors {
+    public static void main(String[] ignoredArgs) {
+        printFactors(6);
+        printFactors(32);
+        printFactors(10);
+        printFactors(-1);
+    }
+    public static void printFactors(int number) {
+        System.out.println("\n******************************************");
+        if (number < 1) {
+            System.out.println("Invalid Value");
+            return;
+        }
+
+        for (int i = 1; i <= number; ++i) {
+            if (number % i == 0) {
+                System.out.printf("%d ".formatted(i));
+            }
+        }
+    }
 }
