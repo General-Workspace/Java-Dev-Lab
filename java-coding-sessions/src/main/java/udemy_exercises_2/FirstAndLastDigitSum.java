@@ -28,4 +28,30 @@ NOTE: Do not add a  main method to solution code.
  */
 
 public class FirstAndLastDigitSum {
+    public static void main(String[] args) {
+        System.out.println(sumFirstAndLastDigit(252));
+        System.out.println(sumFirstAndLastDigit(257));
+        System.out.println(sumFirstAndLastDigit(0));
+        System.out.println(sumFirstAndLastDigit(-10));
+
+//        System.out.println(sumFirstAndLastDigitS(252));
+    }
+    public static int sumFirstAndLastDigit(int number) {
+        if (number < 0) return -1;
+
+        int lastDigit = number % 10;
+        while (number >= 10) {
+            number = (int) (double) (number / 10);
+        }
+        return number + lastDigit;
+    }
+
+    public static int sumFirstAndLastDigitS(int number) {
+        if (number < 0) return -1;
+
+        String numString = Integer.toString(number);
+        int first = Integer.parseInt(numString.substring(0, 1));
+        int last = Integer.parseInt(numString.substring(numString.length() - 1));
+        return first + last;
+    }
 }
