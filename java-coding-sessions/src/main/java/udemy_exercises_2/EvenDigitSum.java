@@ -26,4 +26,27 @@ NOTE: Do not add a main method to the solution code.
  */
 
 public class EvenDigitSum {
+    public static void main(String[] args) {
+        System.out.println(getEvenDigitSum(123456789));
+        System.out.println(getEvenDigitSum(252));
+        System.out.println(getEvenDigitSum(-22));
+    }
+    public static int getEvenDigitSum(int number) {
+        if (number < 0) return -1;
+
+        int totalSum = 0;
+
+        if (number < 10 && number % 2 == 0) {
+            totalSum += number;
+        } else {
+            while (number >= 10) {
+                int remainder = number % 10;
+                if (remainder % 2 == 0) {
+                    totalSum += remainder;
+                }
+                number = number / 10;
+            }
+        }
+        return totalSum;
+    }
 }
