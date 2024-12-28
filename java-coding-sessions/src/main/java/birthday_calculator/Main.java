@@ -10,7 +10,8 @@ public class Main {
                 3. c - Check remaining days until next birthday
                 4. d - Check your age before a specific date
                 5. e - Check the duration since your last birthday
-                6. q - Quit or Exit
+                6. f - Future date of birthday based on age provided
+                7. q - Quit or Exit
                 """;
         System.out.println("Welcome to Birthday Checker. What would you like to do?");
         System.out.println(keyGuide);
@@ -78,6 +79,18 @@ public class Main {
                     String day = scanner.nextLine();
                     String durationSinceLastBirthday = birthdayCalculator.durationSinceLastBirthday(year, month, day);
                     System.out.println(durationSinceLastBirthday);
+                }
+                case "f" -> {
+                    System.out.println("Enter your birth year:");
+                    String year = scanner.nextLine();
+                    System.out.println("Enter your birth month:");
+                    String month = scanner.nextLine();
+                    System.out.println("Enter your birth day:");
+                    String day = scanner.nextLine();
+                    System.out.println("Enter the age:");
+                    String age = scanner.nextLine();
+                    String futureDate = birthdayCalculator.futureBirthday(year, month, day, age);
+                    System.out.println(futureDate);
                 }
                 default -> {
                     System.out.println("Invalid input. Please try again.");

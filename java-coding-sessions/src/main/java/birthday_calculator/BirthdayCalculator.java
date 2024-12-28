@@ -163,6 +163,27 @@ public class BirthdayCalculator {
     }
 
     /**
+     * The year, month and day that user will achieve a certain age
+     * @param year year of birth
+     * @param month month of birth
+     * @param day day of birth
+     * @param age age to calculate future birthday
+     * @return Future birthday
+     */
+    public String futureBirthday(String year, String month, String day, String age) {
+        // Get the birthdate
+        LocalDateTime birthDate = parseBirthDate(year, month, day);
+
+        // Get the age
+        long ageToAchieve = Long.parseLong(age);
+
+        // Calculate the future birthday
+        LocalDateTime futureBirthday = birthDate.plusYears(ageToAchieve);
+
+        return "You will be %s years old on %s!".formatted(age, futureBirthday.toLocalDate());
+    }
+
+    /**
      * Format the time unit
      * @param timeUnit (year, month, day, hour, minute, second)
      * @param unit literal String of the time unit
