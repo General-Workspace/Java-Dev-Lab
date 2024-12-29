@@ -184,6 +184,39 @@ public class BirthdayCalculator {
     }
 
     /**
+     * Number of years that have passed since the user became an adult (18 years old)
+     * @param year year of birth
+     * @param month month of birth
+     * @param day day of birth
+     * @return Duration since the user became an adult
+     */
+    public String yearsSinceBecomingAdult(String year, String month, String day) {
+        // Get the birthdate
+        LocalDateTime birthDate = parseBirthDate(year, month, day);
+
+        // Calculate the date when the user became an adult
+        LocalDateTime becameAdult = birthDate.plusYears(18);
+
+        // Get the current date
+        LocalDateTime currentTime = LocalDateTime.now();
+
+        // Calculate the difference between the current date and the date when the user became an adult
+        Duration duration = Duration.between(becameAdult, currentTime);
+
+        // Calculate the duration in years, months, days, hours, minutes, and seconds
+        TimeUnit timeUnit = calculateTimeUnits(duration);
+
+        String years = formatTimeUnit(timeUnit.years(), "year");
+        String months = formatTimeUnit(timeUnit.months(), "month");
+        String days = formatTimeUnit(timeUnit.days(), "day");
+        String hours = formatTimeUnit(timeUnit.hours(), "hour");
+        String minutes = formatTimeUnit(timeUnit.minutes(), "minute");
+        String seconds = formatTimeUnit(timeUnit.seconds(), "second");
+
+        return "It has been %s since you became an adult!".formatted("%s, %s, %s, %s, %s, %s".formatted(years, months, days, hours, minutes, seconds));
+    }
+
+    /**
      * Format the time unit
      * @param timeUnit (year, month, day, hour, minute, second)
      * @param unit literal String of the time unit
