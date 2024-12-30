@@ -58,5 +58,29 @@ NOTE: The method inputThenPrintSumAndAverage should be defined as public static 
 NOTE: Do not add the main method to the solution code.
  */
 
+import java.util.Scanner;
+
 public class InputCalculator {
+    public static void main(String[] args) {
+        inputThenPrintSumAndAverage();
+    }
+    public static void inputThenPrintSumAndAverage() {
+        Scanner scanner = new Scanner(System.in);
+        int sum = 0;
+        long avg = 0;
+        int count = 0;
+        while (true) {
+            if (scanner.hasNextInt()) {
+                sum += scanner.nextInt();
+                count++;
+            } else {
+                break;
+            }
+        }
+        scanner.close();
+        if (count > 0) {
+            avg = Math.round((double) sum / count);
+        }
+        System.out.println("SUM = " + sum + " AVG = " + avg);
+    }
 }
