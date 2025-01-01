@@ -213,7 +213,40 @@ public class BirthdayCalculator {
         String minutes = formatTimeUnit(timeUnit.minutes(), "minute");
         String seconds = formatTimeUnit(timeUnit.seconds(), "second");
 
-        return "It has been %s since you became an adult!".formatted("%s, %s, %s, %s, %s, %s".formatted(years, months, days, hours, minutes, seconds));
+        return "%s has passed since you became an adult!".formatted("%s, %s, %s, %s, %s, %s".formatted(years, months, days, hours, minutes, seconds));
+    }
+
+    public String yearsLeftBeforeReachingCertainAge(String year, String month, String day, String age) {
+        // Get the birthdate
+        LocalDateTime birthDate = parseBirthDate(year, month, day);
+
+        // Get the age
+        long ageToAchieve = Long.parseLong(age);
+
+        // Calculate the future birthday
+        LocalDateTime futureBirthday = birthDate.plusYears(ageToAchieve);
+
+        // Get the current date
+        LocalDateTime currentTime = LocalDateTime.now();
+
+        // Calculate the difference between the current date and the future birthday
+        Duration duration = Duration.between(currentTime, futureBirthday);
+
+        if (duration.isNegative()) {
+            return "You have already turned %s!".formatted(age);
+        }
+
+        // Calculate the duration in years, months, days, hours, minutes, and seconds
+        TimeUnit timeUnit = calculateTimeUnits(duration);
+
+        String years = formatTimeUnit(timeUnit.years(), "year");
+        String months = formatTimeUnit(timeUnit.months(), "month");
+        String days = formatTimeUnit(timeUnit.days(), "day");
+        String hours = formatTimeUnit(timeUnit.hours(), "hour");
+        String minutes = formatTimeUnit(timeUnit.minutes(), "minute");
+        String seconds = formatTimeUnit(timeUnit.seconds(), "second");
+
+        return "You have %s left before you turn %s!".formatted("%s, %s, %s, %s, %s, %s".formatted(years, months, days, hours, minutes, seconds), age);
     }
 
     /**
