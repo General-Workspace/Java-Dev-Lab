@@ -82,17 +82,20 @@ public class NumberToWords {
         numberToWords(1010); // One Zero One Zero
         numberToWords(1000); // One Zero Zero Zero
         numberToWords(-12); // Invalid Value
+        numberToWords(0); // Zero
     }
-    public static void numberToWords(int number) {
+
+    public static void numberToWordsOld(int number) {
         if (number < 0) {
             System.out.println("Invalid Value");
         } else {
             int reversedNumber = reverse(number);
             int digitCount = getDigitCount(number);
             int reversedDigitCount = getDigitCount(reversedNumber);
-            int zeroCount = digitCount - reversedDigitCount;
+            int difference = digitCount - reversedDigitCount;
+            int lastDigit;
             while (reversedNumber > 0) {
-                int lastDigit = reversedNumber % 10;
+                lastDigit = reversedNumber % 10;
                 switch (lastDigit) {
                     case 0:
                         System.out.println("Zero");
@@ -127,16 +130,19 @@ public class NumberToWords {
                 }
                 reversedNumber /= 10;
             }
-            for (int i = 0; i < zeroCount; i++) {
-                System.out.println("Zero");
+            if (difference > 0) {
+                for (int i = 0; i < difference; i++) {
+                    System.out.println("Zero");
+                }
             }
         }
     }
 
     public static int reverse(int number) {
         int reversedNumber = 0;
+        int lastDigit;
         while (number != 0) {
-            int lastDigit = number % 10;
+            lastDigit = number % 10;
             reversedNumber = reversedNumber * 10 + lastDigit;
             number /= 10;
         }
@@ -146,12 +152,57 @@ public class NumberToWords {
     public static int getDigitCount(int number) {
         if (number < 0) {
             return -1;
+        } else if (number == 0) {
+            return 1;
+        } else {
+            int count = 0;
+            while (number > 0) {
+                count++;
+                number /= 10;
+            }
+            return count;
         }
-        int count = 0;
-        do {
-            count++;
-            number /= 10;
-        } while (number > 0);
-        return count;
+    }
+
+    public static void numberToWords(int number) {
+
+        if (number < 0) {
+            System.out.println("Invalid Value");
+            return;
+        }
+
+        // get reversed number
+        int reverse = reverse(number);
+
+        // subtract numberDigits and reverseDigits to get leading zeroes
+        int leadingZeroes = getDigitCount(number) - getDigitCount(reverse);
+
+        if (number == 0) {
+            System.out.println("Zero");
+            return;
+        }
+
+        // use loop to print words
+        while (reverse != 0) {
+            int lastDigit = reverse % 10;
+            switch (lastDigit) {
+                case 0 -> System.out.println("Zero");
+                case 1 -> System.out.println("One");
+                case 2 -> System.out.println("Two");
+                case 3 -> System.out.println("Three");
+                case 4 -> System.out.println("Four");
+                case 5 -> System.out.println("Five");
+                case 6 -> System.out.println("Six");
+                case 7 -> System.out.println("Seven");
+                case 8 -> System.out.println("Eight");
+                case 9 -> System.out.println("Nine");
+            }
+            reverse /= 10;
+        }
+
+        // print zeroes if there are any leading zeroes in reversed number
+        for (int i = 0; i < leadingZeroes; i++) {
+            System.out.println("Zero");
+        }
     }
 }
