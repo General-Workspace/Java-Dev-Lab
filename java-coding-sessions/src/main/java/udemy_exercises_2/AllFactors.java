@@ -49,7 +49,7 @@ public class AllFactors {
         printFactors(-1);
     }
     public static void printFactors(int number) {
-        System.out.println("\n******************************************");
+        System.out.println("\n" + "*".repeat(42));
         if (number < 1) {
             System.out.println("Invalid Value");
             return;
