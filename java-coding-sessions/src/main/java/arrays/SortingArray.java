@@ -15,6 +15,17 @@ public class SortingArray {
         return sortArrayDesc(randomArray);
     }
 
+    public int[] getRandomArray(int len, int bound) {
+        Random random = new Random();
+        int[] randomArray = new int[len];
+
+        for (int i = 0; i < len; ++i) {
+            randomArray[i] = random.nextInt(bound);
+        }
+
+        return sortArray(randomArray);
+    }
+
     public int[] sortDesc(int[] arr) {
         int[] sortedArray = Arrays.copyOf(arr, arr.length);
         boolean flag = true;
