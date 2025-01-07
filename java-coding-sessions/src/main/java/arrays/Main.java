@@ -1,7 +1,6 @@
 package arrays;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,16 +12,17 @@ public class Main {
 //        System.out.println(Arrays.toString(randomArrayAsc));
 
         MinimumElement minimumElement = new MinimumElement();
-        System.out.println("Enter numbers separated by commas");
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        int[] numArray = minimumElement.readIntegers(input);
+        int[] numArray = minimumElement.readIntegers();
         System.out.println(Arrays.toString(numArray));
 
         System.out.println("- ".repeat(30));
 
-        int minimumNumber = minimumElement.findMin(numArray);
+        int minimumNumber = minimumElement.findMin2(numArray);
         System.out.println("Minimum Number: " + minimumNumber);
+
+        System.out.println("- ".repeat(30));
+        System.out.println("Array before reverse: " + Arrays.toString(numArray));
+        minimumElement.reverse2(numArray);
 
     }
 }

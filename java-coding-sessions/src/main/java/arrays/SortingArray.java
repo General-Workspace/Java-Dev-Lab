@@ -26,17 +26,6 @@ public class SortingArray {
         return sortArray(randomArray);
     }
 
-//    public int[] sortDescBySwapping(int[] arr) {
-//        int[] sortDesc = new int[arr.length];
-//        Arrays.sort(arr);
-//
-//        for (int i = arr.length - 1; i > 0; i--) {
-//
-//        }
-//
-//        return sortDesc;
-//    }
-
     public int[] sortDesc(int[] arr) {
         int[] sortedArray = Arrays.copyOf(arr, arr.length);
         boolean flag = true;
