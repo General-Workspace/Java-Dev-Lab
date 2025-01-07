@@ -4,11 +4,11 @@ import java.util.Arrays;
 
 public class MinimumElement {
     public int[] readIntegers(String list) {
-        String[] stringList = list.split(", ");
+        String[] stringList = list.split(",");
 
         int[] numbers = new int[stringList.length];
         for (int i = 0; i < stringList.length; ++i) {
-            numbers[i] = Integer.parseInt(stringList[i]);
+            numbers[i] = Integer.parseInt(stringList[i].trim());
         }
 
 //        Arrays.sort(numbers);
