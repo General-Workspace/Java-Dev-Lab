@@ -14,12 +14,13 @@ public class Sorting {
         return numbers;
     }
 
-    public ArrayList<Integer> sortedList(int[] input) {
-        //List transformedInput = List.of(input);
-        //ArrayList<Integer> arrayList = new ArrayList<Integer>(input.length);
-        ArrayList<int[]> arrayList = new ArrayList<>(Arrays.asList(input));
-        arrayList.sort(Comparator.naturalOrder());
-
-        return arrayList;
-    }
+//    public ArrayList<Integer> sortedList(int[] input) {
+//        //List<int> transformedInput = List.of(input);
+//        //ArrayList<Integer> arrayList = new ArrayList<Integer>(input.length);
+//        // ArrayList<int[]> arrayList = new ArrayList<>();
+//        var arrayList = Arrays.asList(input);
+//        arrayList.sort(Comparator.naturalOrder());
+//
+//        return arrayList;
+//    }
 }

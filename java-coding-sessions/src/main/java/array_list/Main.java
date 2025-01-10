@@ -7,7 +7,7 @@ public class Main {
         Sorting sorting = new Sorting();
         int[] numbers = sorting.readInput(10, 301);
 
-        System.out.println(sorting.sortedList(numbers));
+       // System.out.println(sorting.sortedList(numbers));
 
     }
 }

@@ -9,11 +9,12 @@ public class MinimumElement {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
 
-        String[] stringList = input.split(",");
+        String[] stringList = input.split(", ");
 
         int[] numbers = new int[stringList.length];
+
         for (int i = 0; i < stringList.length; ++i) {
-            numbers[i] = Integer.parseInt(stringList[i].trim());
+            numbers[i] = Integer.parseInt(stringList[i]);
         }
 
         return numbers;
