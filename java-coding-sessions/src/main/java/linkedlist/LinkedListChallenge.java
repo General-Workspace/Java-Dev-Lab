@@ -29,4 +29,15 @@ public class LinkedListChallenge {
 
         list.add(place);
     }
+
+    public void printMenu() {
+        String menu = """
+                Available actions (select word or letter):
+                (F)orward
+                (B)ackwards
+                (L)ist Places
+                (M)enu
+                (Q)uit""";
+        System.out.println(menu);
+    }
 }
