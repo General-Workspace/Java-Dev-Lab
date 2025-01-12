@@ -47,6 +47,7 @@ public class PerfectNumber {
         System.out.println(isPerfectNumber(28)); // true
         System.out.println(isPerfectNumber(5)); // false
         System.out.println(isPerfectNumber(-1)); // false
+        System.out.println(isPerfectNumber(10));
     }
     public static boolean isPerfectNumber(int number) {
         if (number < 1) {
