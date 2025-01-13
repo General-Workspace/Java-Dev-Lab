@@ -9,7 +9,7 @@ public class Main {
 
         for (int i = 0; i < 10; ++i) {
             weekDay  = randomDay.getRandomDay(7);
-            System.out.printf("WeekDay is %s, Ordinal value = %d%n", weekDay.name(), weekDay.ordinal() + 1);
+            System.out.printf("WeekDay is %s, Ordinal value = %d%n", weekDay.name().charAt(0) + weekDay.name().substring(1).toLowerCase(), weekDay.ordinal() + 1);
         }
     }
 }
