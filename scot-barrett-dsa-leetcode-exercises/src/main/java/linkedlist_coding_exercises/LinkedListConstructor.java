@@ -35,4 +35,35 @@ Implement the LinkedList constructor following the above guidelines. This constr
 package linkedlist_coding_exercises;
 
 public class LinkedListConstructor {
+    private Node head;
+    private Node tail;
+    private int length;
+
+    class Node {
+        int value;
+        Node next;
+
+        Node(int value) {
+            this.value = value;
+        }
+    }
+
+    public LinkedListConstructor(int value) {
+        Node newNode = new Node(value);
+        this.head = newNode;
+        this.tail = newNode;
+        this.length = 1;
+    }
+
+    public void getHead() {
+        System.out.println("Head: " + head.value);
+    }
+
+    public void getTail() {
+        System.out.println("Tail: " + tail.value);
+    }
+
+    public void getLength() {
+        System.out.println("Length: " + length);
+    }
 }
