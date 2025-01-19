@@ -55,15 +55,30 @@ public class LinkedListConstructor {
         this.length = 1;
     }
 
-    public void getHead() {
+    public Node getHead() {
         System.out.println("Head: " + head.value);
+        return head;
     }
 
-    public void getTail() {
+    public Node getTail() {
         System.out.println("Tail: " + tail.value);
+        return tail;
     }
 
-    public void getLength() {
+    public int getLength() {
         System.out.println("Length: " + length);
+        return length;
+    }
+
+    public void setHead(Node head) {
+        this.head = head;
+    }
+
+    public void setTail(Node tail) {
+        this.tail = tail;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
     }
 }

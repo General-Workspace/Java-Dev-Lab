@@ -26,5 +26,20 @@ Increment the length attribute of the list by 1.
 
 package linkedlist_coding_exercises;
 
-public class Append {
+public class Append extends LinkedListConstructor {
+    public Append(int value) {
+        super(value);
+    }
+
+    public void append(int value) {
+        Node newNode = new Node(value);
+        if (getLength() == 0) {
+            setHead(newNode);
+            setTail(newNode);
+        } else {
+            getTail().next = newNode;
+            setTail(newNode);
+        }
+        setLength(1);
+    }
 }
