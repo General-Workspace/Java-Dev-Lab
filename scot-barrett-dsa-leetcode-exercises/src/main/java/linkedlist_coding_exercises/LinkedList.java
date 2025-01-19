@@ -21,6 +21,25 @@ public class LinkedList {
         this.length = 1;
     }
 
+    public void append(int value) {
+        Node newNode = new Node(value);
+        if (this.length == 0) {
+            this.head = newNode;
+        } else {
+            this.tail.next = newNode;
+        }
+        this.tail = newNode;
+        this.length++;
+    }
+
+    public void printList() {
+        Node temp = head;
+        while(temp != null) {
+            System.out.println(temp.value);
+            temp = temp.next;
+        }
+    }
+
     public void getHead() {
         System.out.println("Head: " + this.head.value);
     }
