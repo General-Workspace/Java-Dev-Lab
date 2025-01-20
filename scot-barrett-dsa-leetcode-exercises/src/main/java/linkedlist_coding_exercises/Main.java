@@ -37,5 +37,11 @@ public class Main {
         System.out.println(lineSeparator);
         System.out.println("LinkedList - Get method");
         System.out.println("Get Node: " + linkedList.get(1).value);
+
+        System.out.println(lineSeparator);
+        System.out.println("LinkedList - Set method");
+        linkedList.set(2, 15);
+        linkedList.set(1, 9);
+        linkedList.printList();
     }
 }
