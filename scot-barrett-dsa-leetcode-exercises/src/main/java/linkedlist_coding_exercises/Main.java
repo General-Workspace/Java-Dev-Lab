@@ -43,5 +43,10 @@ public class Main {
         linkedList.set(2, 15);
         linkedList.set(1, 9);
         linkedList.printList();
+
+        System.out.println(lineSeparator);
+        System.out.println("LinkedList - Insert method");
+        linkedList.insert(2, 7);
+        linkedList.printList();
     }
 }
