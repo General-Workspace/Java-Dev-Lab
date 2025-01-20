@@ -1,5 +1,7 @@
 package generics;
 
+import generics.records.BaseballPlayer;
+
 import java.util.*;
 
 public class BaseballTeam {

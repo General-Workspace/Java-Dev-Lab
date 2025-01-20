@@ -68,15 +68,15 @@ public class LinkedList {
 
     public Node removeFirst() {
         if (length == 0) return null;
+        Node temp = head;
         if (length == 1) {
             head = null;
             tail = null;
-            length--;
-            return null;
+        } else {
+            head = head.next;
+            temp.next = null;
+
         }
-        Node temp = head;
-        head = head.next;
-        temp.next = null;
         length--;
         return temp;
     }
@@ -150,18 +150,28 @@ public class LinkedList {
         }
     }
 
-//    public Node removeFirst() {
-//        if (length == 0) return null;
-//        Node temp = head;
-//        head = head.next;
-//        temp.next = null;
-//        length--;
-//
-//        if (length == 0) {
-//            tail = null;
-//        }
-//        return temp;
-//    }
+    public void printAll() {
+        if (length == 0) {
+            System.out.println("Head: null");
+            System.out.println("Tail: null");
+        } else {
+            System.out.println("Head: " + head.value);
+            System.out.println("Tail: " + tail.value);
+        }
+        System.out.println("Length:" + length);
+        System.out.println("\nLinked List:");
+        if (length == 0) {
+            System.out.println("empty");
+        } else {
+            printList();
+        }
+    }
+
+    public void makeEmpty() {
+        head = null;
+        tail = null;
+        length = 0;
+    }
 
     public void printList() {
         Node temp = head;

@@ -1,4 +1,4 @@
-package generics;
+package generics.interfaces;
 
 public interface Player {
     String name();

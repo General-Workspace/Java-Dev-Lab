@@ -1,5 +1,7 @@
 package generics;
 
+import generics.interfaces.Player;
+
 import java.util.ArrayList;
 import java.util.List;
 

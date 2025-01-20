@@ -1,5 +1,7 @@
 package generics;
 
+import generics.interfaces.Player;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +29,8 @@ public class Team<T extends Player, S> {
     }
 
     public void listTeamMembers() {
-        System.out.println(teamName + " Roster: ");
+        System.out.print(teamName + " Roster: ");
+        System.out.println(affiliation == null ? "" : " AFFILIATION " + affiliation);
         for (var teamMember : teamMembers) {
             System.out.println(teamMember.name() + " - " + teamMember.position());
         }
