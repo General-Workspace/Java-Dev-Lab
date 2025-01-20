@@ -33,5 +33,9 @@ public class Main {
         System.out.println("Removed First: " + linkedList.removeFirst().value);
         linkedList.getLength();
         linkedList.printList();
+
+        System.out.println(lineSeparator);
+        System.out.println("LinkedList - Get method");
+        System.out.println("Get Node: " + linkedList.get(1).value);
     }
 }
