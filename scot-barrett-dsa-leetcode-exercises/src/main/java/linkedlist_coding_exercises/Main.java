@@ -15,5 +15,11 @@ public class Main {
         linkedList.append(2);
         linkedList.append(3);
         linkedList.printList();
+
+        System.out.println(lineSeparator);
+        System.out.println("LinkedList - Remove Last method");
+        System.out.println("Removed Node: " + linkedList.removeLast().value);
+        System.out.println("Removed Node: " + linkedList.removeLast().value);
+        linkedList.printList();
     }
 }

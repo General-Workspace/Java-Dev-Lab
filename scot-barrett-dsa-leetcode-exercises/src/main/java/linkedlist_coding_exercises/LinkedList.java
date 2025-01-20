@@ -5,7 +5,7 @@ public class LinkedList {
     private Node tail;
     private int length;
 
-    class Node {
+    static class Node {
         int value;
         Node next;
 
@@ -30,6 +30,28 @@ public class LinkedList {
         }
         this.tail = newNode;
         this.length++;
+    }
+
+    public Node removeLast() {
+        if (this.length == 0) return null;
+        Node temp = this.head;
+        Node pre = this.head;
+
+        while (temp.next != null) {
+            pre = temp;
+            temp = temp.next;
+        }
+
+        this.tail = pre;
+        this.tail.next = null;
+        length--;
+
+        if (this.length == 0) {
+            this.head = null;
+            this.tail = null;
+        }
+
+        return temp;
     }
 
     public void printList() {
