@@ -25,6 +25,13 @@ public class Main {
         System.out.println("LinkedList - Prepend method");
         linkedList.prepend(5);
         linkedList.prepend(10);
+        linkedList.getLength();
+        linkedList.printList();
+
+        System.out.println(lineSeparator);
+        System.out.println("LinkedList - Remove First method");
+        System.out.println("Removed First: " + linkedList.removeFirst().value);
+        linkedList.getLength();
         linkedList.printList();
     }
 }
