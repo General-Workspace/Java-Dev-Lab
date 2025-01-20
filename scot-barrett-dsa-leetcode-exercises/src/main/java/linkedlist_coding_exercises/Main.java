@@ -48,5 +48,10 @@ public class Main {
         System.out.println("LinkedList - Insert method");
         linkedList.insert(2, 7);
         linkedList.printList();
+
+        System.out.println(lineSeparator);
+        System.out.println("LinkedList - Remove method");
+        linkedList.remove(2);
+        linkedList.printList();
     }
 }

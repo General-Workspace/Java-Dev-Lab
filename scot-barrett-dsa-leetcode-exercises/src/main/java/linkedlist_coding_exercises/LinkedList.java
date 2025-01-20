@@ -120,6 +120,20 @@ public class LinkedList {
         return true;
     }
 
+    public Node remove(int index) {
+        if (index < 0 || index >= length) return null;
+        if (index == 0) return removeFirst();
+        if (index == length - 1) return removeLast();
+
+        Node prev = get(index - 1);
+        Node temp = prev.next;
+        prev.next = temp.next;
+        temp.next = null;
+        length--;
+        return temp;
+
+    }
+
 //    public Node removeFirst() {
 //        if (length == 0) return null;
 //        Node temp = head;
