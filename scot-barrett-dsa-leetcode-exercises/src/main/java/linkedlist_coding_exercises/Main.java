@@ -19,7 +19,12 @@ public class Main {
         System.out.println(lineSeparator);
         System.out.println("LinkedList - Remove Last method");
         System.out.println("Removed Node: " + linkedList.removeLast().value);
-        System.out.println("Removed Node: " + linkedList.removeLast().value);
+        linkedList.printList();
+
+        System.out.println(lineSeparator);
+        System.out.println("LinkedList - Prepend method");
+        linkedList.prepend(5);
+        linkedList.prepend(10);
         linkedList.printList();
     }
 }
