@@ -51,7 +51,12 @@ public class Main {
 
         System.out.println(lineSeparator);
         System.out.println("LinkedList - Remove method");
-        linkedList.remove(2);
+        System.out.println("Removed Node: " + linkedList.remove(2));
+        linkedList.printList();
+
+        System.out.println(lineSeparator);
+        System.out.println("LinkedList - Reverse method");
+        linkedList.reverse();
         linkedList.printList();
     }
 }
