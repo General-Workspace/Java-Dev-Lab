@@ -56,11 +56,6 @@ If your Linked List contains a loop, it indicates a flaw in its implementation. 
 
 
 
-
-
-
-
-
 Note:
 
 In this problem, you should use the slow and fast pointer technique (also known as Floyd's Tortoise and Hare algorithm) to efficiently detect the presence of a loop in the linked list.
