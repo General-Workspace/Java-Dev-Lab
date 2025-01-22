@@ -1,4 +1,4 @@
-package linkedlist_leetcode_interview.findMiddleNode;
+package linkedlist_leetcode_interview.findMiddleNode_1;
 
 public class FindMiddleNode {
     private Node head;

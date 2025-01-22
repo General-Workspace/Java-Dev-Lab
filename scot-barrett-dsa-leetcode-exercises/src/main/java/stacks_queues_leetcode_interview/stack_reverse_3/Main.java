@@ -13,9 +13,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String myString = "hello";
-        String reversedString = reverseString(myString);
-        System.out.println(reversedString);
+//        String myString = "hello";
+//        String reversedString = reverseString(myString);
+//        System.out.println(reversedString);
 
         /*
             EXPECTED OUTPUT:

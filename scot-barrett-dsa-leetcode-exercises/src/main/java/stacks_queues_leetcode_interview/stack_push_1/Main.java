@@ -4,13 +4,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Stack myStack = new Stack();
-
-        myStack.push(1);
-        myStack.push(2);
-        myStack.push(3);
-
-        myStack.printStack();
+//        Stack myStack = new Stack();
+//
+//        myStack.push(1);
+//        myStack.push(2);
+//        myStack.push(3);
+//
+//        myStack.printStack();
 
         /*
             EXPECTED OUTPUT:
@@ -19,7 +19,5 @@ public class Main {
 			1
 
         */
-
     }
-
 }
