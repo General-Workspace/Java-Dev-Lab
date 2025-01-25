@@ -44,22 +44,4 @@ public class EvenDigitSum {
         }
         return sum;
     }
-    /*
-    if (number < 0) return -1;
-
-        int totalSum = 0;
-
-        if (number < 10 && number % 2 == 0) {
-            totalSum += number;
-        } else {
-            while (number >= 10) {
-                int remainder = number % 10;
-                if (remainder % 2 == 0) {
-                    totalSum += remainder;
-                }
-                number = number / 10;
-            }
-        }
-        return totalSum;
-     */
 }

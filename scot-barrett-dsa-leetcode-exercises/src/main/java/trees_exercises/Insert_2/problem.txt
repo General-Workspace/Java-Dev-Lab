@@ -1,0 +1,30 @@
+BST: Insert
+Implement the insert method that adds a new node to the tree.
+
+Return type: boolean
+
+
+
+The method should perform the following tasks:
+
+Create a new Node object called newNode with the given integer value.
+
+If the root node is null, set the root to the newNode and return true.
+
+Create a temporary node called temp and set it to the root node.
+
+Use a while loop to traverse the tree:
+
+If the newNode value is equal to the temp node value, return false (no duplicates allowed).
+
+If the newNode value is less than the temp node value:
+
+If the left child of temp is null, set the left child to newNode and return true.
+
+Otherwise, set temp to its left child.
+
+If the newNode value is greater than the temp node value:
+
+If the right child of temp is null, set the right child to newNode and return true.
+
+Otherwise, set temp to its right child.

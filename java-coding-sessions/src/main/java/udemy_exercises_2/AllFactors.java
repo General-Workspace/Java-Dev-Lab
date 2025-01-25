@@ -60,5 +60,13 @@ public class AllFactors {
                 System.out.printf("%d ".formatted(i));
             }
         }
+
+//        int i = 1;
+//        while (i <= number) {
+//            if (number % i == 0) {
+//                System.out.printf("%d ".formatted(i));
+//            }
+//            i++;
+//        }
     }
 }

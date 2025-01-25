@@ -1,0 +1,20 @@
+HT: Constructor
+Create a HashTable class with the following attributes and an inner Node class:
+
+
+
+An integer attribute named size, initialized with a default value of 7.
+
+An array of Node objects named dataMap with the length equal to the size attribute.
+
+An inner class called Node with the following attributes:
+
+A String attribute named key.
+
+An integer attribute named value.
+
+A Node attribute named next (for handling collisions via chaining).
+
+A constructor for the Node class that accepts a String key and an integer value, initializing the respective attributes.
+
+A constructor for the HashTable class that initializes the dataMap attribute as an array of Node objects with a length equal to the size attribute.

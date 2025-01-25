@@ -1,0 +1,33 @@
+BST: Interview / LeetCode Exercises Location
+Practically all LeetCode BST exercises require recursion, which will be covered later in the course in the following sections:
+
+
+
+Recursive Binary Search Trees: Dive deep into how recursion powers the core operations in BSTs, such as searching, insertion, and deletion. We'll start with the basics and gradually move to more complex applications.
+
+Tree Traversal: Learn the various ways to navigate through a tree, a skill essential for understanding and manipulating BSTs. This section will cover:
+
+Breadth-First Search (BFS)
+
+Depth First Search (DFS) in three variants:
+
+Pre-Order
+
+In-Order
+
+Post-Order
+
+
+LeetCode / Interview Questions We Will Cover:
+
+To ensure you're well-prepared for technical interviews, we'll tackle some of the most common BST interview questions, including:
+
+Deleting a Node from a BST: Understand the strategies to remove a node while maintaining the BST properties.
+
+Converting a Sorted Array to a Balanced BST: Learn how to transform a sorted array into a balanced BST to ensure efficient operations.
+
+Inverting a BST: Explore the concept of flipping a BST to mirror its structure.
+
+Validating a BST: Discover how to check if a binary tree satisfies BST conditions, an essential problem-solving skill.
+
+By the end of these sections, you'll have a solid foundation in both recursion and BSTs.

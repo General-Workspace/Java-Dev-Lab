@@ -1,0 +1,22 @@
+BST: Contains
+Implement the contains method that checks if a node with a given value exists in the tree.
+
+Return type: boolean
+
+
+
+The method should perform the following tasks:
+
+If the root node is null, return false.
+
+Create a temporary node called temp and set it to the root node.
+
+Use a while loop to traverse the tree:
+
+If the given value is less than the temp node value, set temp to its left child.
+
+If the given value is greater than the temp node value, set temp to its right child.
+
+If the given value is equal to the temp node value, return true.
+
+If the loop exits without finding a match, return false.
