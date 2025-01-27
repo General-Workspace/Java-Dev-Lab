@@ -1,5 +1,8 @@
 package RecordProject;
 
+import RecordProject.model.LPAStudent;
+import RecordProject.model.Student;
+
 public class Main {
     public static void main(String[] args) {
         // using pojo (plain old java object)
