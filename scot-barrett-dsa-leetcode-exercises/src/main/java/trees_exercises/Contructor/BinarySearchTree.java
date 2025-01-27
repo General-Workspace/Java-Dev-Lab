@@ -9,8 +9,8 @@ public class BinarySearchTree {
     //                                                 //
     /////////////////////////////////////////////////////
 
-    public Node getRoot() {
-        return root;
-    }
+//    public Node getRoot() {
+//        return root;
+//    }
 
 }
