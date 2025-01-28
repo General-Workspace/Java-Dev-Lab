@@ -1,7 +1,7 @@
 package recursion.factorial;
 
 public class Factorial {
-    public int usingFactorial(int n) {
+    public int usingFactorial(int nu) {
         if (n < 1) return 0;
 
         int result = 1;
