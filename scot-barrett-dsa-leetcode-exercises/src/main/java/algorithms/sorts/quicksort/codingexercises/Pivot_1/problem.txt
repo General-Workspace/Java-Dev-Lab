@@ -1,0 +1,23 @@
+Pivot
+Implement the pivot method that takes an integer array, a pivotIndex, and an endIndex as input and rearranges the elements of the array around the pivot element, which is the element at the pivotIndex.
+
+The method should return the new pivot index after rearrangement.
+
+Return type: int
+
+
+
+The method should perform the following tasks:
+
+Initialize a swapIndex variable with the value of pivotIndex.
+
+Iterate through the array from pivotIndex + 1 to endIndex (inclusive) with an index i. a. If the element at index i is less than the pivot element (element at pivotIndex), increment the swapIndex, and then swap the elements at index i and swapIndex using a swap method.
+
+After iterating through the array, swap the pivot element with the element at swapIndex.
+
+Return the updated value of swapIndex after rearrangement.
+
+
+
+
+This method will be written in the same class as the main method so it will be static.  For more information on static methods click on "Hints."

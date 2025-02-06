@@ -1,0 +1,16 @@
+rBST: Insert
+Implement the rInsert method in the BinarySearchTree class.
+
+The rInsert method is a recursive method designed to insert a specific integer value into the binary search tree (BST).
+
+The rInsert method consists of two parts. The public part of the method (provided) public void rInsert(int value) takes the value to be inserted as a parameter. It creates a new Node if the root is null or calls the private part of the method private Node rInsert(Node currentNode, int value) with the root of the BST and the value to be inserted as arguments.
+
+
+
+Here is the logic you need to implement:
+
+If the currentNode is null, it means we have found the correct location to insert the new node. In this case, return a new Node with the value to be inserted.
+
+If the value to be inserted is less than the value of the currentNode, continue the insertion operation on the left subtree of the currentNode. This is due to the property of a BST, where values less than a node's value are placed in its left subtree. Set the left child of the currentNode as the result of the recursive call.
+
+If the value to be inserted is greater than the value of the currentNode, continue the insertion operation on the right subtree of the currentNode. This is due to the property of a BST, where values greater than a node's value are placed in its right subtree. Set the right child of the currentNode as the result of the recursive call.

@@ -1,0 +1,44 @@
+Heap: Remove
+You have been provided with a Heap class that includes the sinkDown method.
+
+** We will be writing the sinkDown method in the next exercise so please do not peek at it in this exercise.  ;-)
+
+Implement the remove method of the Heap class.
+
+The Heap class represents a max heap, which means every parent node is always greater than or equal to its child nodes.
+
+The Heap class contains several methods already:
+
+getHeap that returns the underlying list representation of the heap,
+
+leftChild that returns the index of the left child of a given index,
+
+rightChild that returns the index of the right child of a given index,
+
+parent that returns the index of the parent of a given index,
+
+swap that swaps the elements of the heap at two given indices,
+
+insert that inserts a value into the heap while maintaining the max heap property,
+
+sinkDown that ensures the max heap property by moving an element at a given index down the heap until it is greater than its children.
+
+
+
+You are to implement the remove method which is responsible for removing the root element (the maximum element in the case of a max heap) from the heap and maintaining the heap property. In other words, after removal, the heap should still hold the max heap property for all elements.
+
+The remove method should perform the following steps:
+
+If the heap is empty, it should return null.
+
+If the heap only has one element, it should remove and return this element.
+
+In the case of a heap with more than one element, it should move the last element to the index of 0 then "sink down" the new root element until it is larger than or equal to its children.
+
+
+
+Make use of the swap and sinkDown methods in your implementation.
+
+Consider edge cases such as when the heap is empty or has only one element when implementing this method.
+
+After you implement the remove method, the Heap class should provide a full implementation of a max heap data structure. Validate your solution by inserting several elements, removing them, and verifying the max heap property is preserved.

@@ -1,0 +1,22 @@
+HT: Keys
+Implement the keys method for the HashTable class that retrieves all the keys in the hash table and returns them as an ArrayList.
+
+Return type: ArrayList
+
+
+
+The method should perform the following tasks:
+
+Create a new ArrayList<String> called allKeys.
+
+Iterate through the dataMap array using a for loop.
+
+For each index, create a temporary Node variable and assign it to the current array element.
+
+Iterate through the linked list at the current index using a while loop.
+
+Add the key of the current node to the allKeys ArrayList.
+
+Move on to the next node in the linked list.
+
+Return the allKeys ArrayList.

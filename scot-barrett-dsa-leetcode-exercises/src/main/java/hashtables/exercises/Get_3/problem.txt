@@ -1,0 +1,20 @@
+HT: Get
+Implement the get method for the HashTable class that retrieves the value associated with a given key in the hash table. If the key is not found, return 0.
+
+Return type: int
+
+
+
+The method should perform the following tasks:
+
+Accept a string key as an argument.
+
+Calculate the index for the given key using the hash function.
+
+Retrieve the Node at the calculated index in the dataMap array.
+
+Iterate through the linked list at the index, checking each node for a matching key.
+
+If a matching key is found, return the value associated with that key.
+
+If the end of the linked list is reached and no matching key is found, return 0.

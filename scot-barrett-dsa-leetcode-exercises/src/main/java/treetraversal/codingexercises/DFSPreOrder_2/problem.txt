@@ -1,0 +1,26 @@
+BST: DFS PreOrder
+Create a DFSPreOrder method within a BinaryTree class that performs a depth-first search (pre-order traversal) of the tree and returns an ArrayList of the visited nodes' values in the order they were visited.
+
+Return type: ArrayList<Integer>
+
+
+
+The method should perform the following tasks:
+
+Create an ArrayList of Integers named results to store the visited nodes' values.
+
+Define an inner class called Traverse that takes a Node called currentNode as a parameter:
+
+Add the value of currentNode to the results ArrayList.
+
+If currentNode has a left child, create a new Traverse object with the left child as the argument.
+
+If currentNode has a right child, create a new Traverse object with the right child as the argument.
+
+Create a new Traverse object with the root of the tree as the argument.
+
+Return the results ArrayList.
+
+
+
+I have also provided an alternative solution in the "Solution Explanation" section that employs a separate recursive helper method rather than using an inner class.

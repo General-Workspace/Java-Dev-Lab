@@ -1,0 +1,21 @@
+Quick Sort
+Create a quickSortHelper method within a sorting class that takes an integer array, a left index, and a right index as input and recursively sorts the array using the quick sort algorithm.
+
+Return type: void
+
+
+
+The method should perform the following tasks:
+
+Check if left is less than right; if not, return without performing any operation.
+
+Call the pivot method (described in a previous problem statement) with the array, left, and right as arguments to find the new pivot index after rearrangement.
+
+Recursively call quickSortHelper with the array, left, and the updated pivotIndex - 1 as arguments.
+
+Recursively call quickSortHelper with the array, the updated pivotIndex + 1, and right as arguments.
+
+
+
+
+This method will be written in the same class as the main method so it will be static.  For more information on static methods click on "Hints."

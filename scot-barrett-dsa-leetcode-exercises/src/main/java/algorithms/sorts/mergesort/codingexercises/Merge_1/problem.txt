@@ -1,0 +1,26 @@
+Merge
+Implement the merge method that takes two sorted integer arrays as input and returns a new array containing all the elements from the input arrays, sorted in ascending order.
+
+Return type: int[]
+
+
+
+The method should perform the following tasks:
+
+Create a new integer array combined with a length equal to the sum of the lengths of the input arrays.
+
+Initialize three index variables: index for the combined array, i for array1, and j for array2, all initially set to 0.
+
+Run a while loop as long as both i and j are within their respective array bounds.
+
+Compare the elements at indices i and j. If the element at array1[i] is less than the element at array2[j], add the element from array1 to the combined array, increment index, and increment i.
+
+Otherwise, add the element from array2 to the combined array, increment index, and increment j.
+
+After the loop, there may still be elements left in either array1 or array2. Run two separate while loops to add the remaining elements from each array to the combined array.
+
+Return the combined array containing all elements from the input arrays, sorted in ascending order.
+
+
+
+This method will be written in the same class as the main method so it will be static.  For more information on static methods click on "Hints."

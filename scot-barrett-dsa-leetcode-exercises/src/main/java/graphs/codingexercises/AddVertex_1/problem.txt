@@ -1,0 +1,16 @@
+Graph: Add Vertex
+Implement the addVertex method for the Graph class that adds a vertex to the graph's adjacency list.
+
+Return type: boolean
+
+
+
+The method should perform the following tasks:
+
+Check if the vertex is already present in the adjList HashMap.
+
+If it is not present, add the vertex to the adjList with an empty ArrayList<String> as its value.
+
+Return true to indicate that the vertex was added successfully.
+
+If the vertex is already present, return false to indicate that the vertex was not added.

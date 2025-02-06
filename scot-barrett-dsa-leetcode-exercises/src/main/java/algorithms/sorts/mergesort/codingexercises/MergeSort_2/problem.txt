@@ -1,0 +1,25 @@
+Merge Sort
+Implement the mergeSort method that takes an unsorted integer array as input and returns a new array containing all the elements from the input array, sorted in ascending order using the merge sort algorithm.
+
+Return type: int[]
+
+
+
+The method should perform the following tasks:
+
+Check if the length of the input array is 1; if so, return the array as it is already sorted.
+
+Calculate the middle index of the input array as midIndex.
+
+Recursively call the mergeSort method on the left half of the input array, starting from the first element up to the midIndex, and store the result in the left array.
+
+Recursively call the mergeSort method on the right half of the input array, starting from the midIndex to the end of the array, and store the result in the right array.
+
+Call the merge method, passing in the left and right arrays, to merge them into a single sorted array.
+
+Return the merged array containing all the elements from the input array, sorted in ascending order.
+
+
+
+
+This method will be written in the same class as the main method so it will be static.  For more information on static methods click on "Hints."

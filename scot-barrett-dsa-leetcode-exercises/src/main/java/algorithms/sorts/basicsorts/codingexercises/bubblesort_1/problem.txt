@@ -1,0 +1,23 @@
+Bubble Sort
+Implement the bubbleSort method that sorts an input integer array using the Bubble Sort algorithm.
+
+Return type: void
+
+
+
+The method should perform the following tasks:
+
+Iterate through the input array from the last index to the first index (excluding the first index).
+
+For each index i, iterate through the array from the first index up to index i-1 (inclusive).
+
+Compare the element at the current index j with the element at the next index j+1.
+
+If the element at index j is greater than the element at index j+1, swap the two elements.
+
+After all iterations, the input array will be sorted in ascending order.
+
+
+
+
+This method will be written in the same class as the main method so it will be static.  For more information on static methods click on "Hints."

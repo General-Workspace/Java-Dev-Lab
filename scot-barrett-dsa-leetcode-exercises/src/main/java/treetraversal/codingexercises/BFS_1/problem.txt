@@ -1,0 +1,20 @@
+BST: Breadth First Search (BFS)
+Create a BFS method within a BinaryTree class that performs a breadth-first search traversal of the tree and returns an ArrayList of the visited nodes' values in the order they were visited.
+
+Return type:  ArrayList<Integer>
+
+
+
+The method should perform the following tasks:
+
+Initialize currentNode as the root of the tree.
+
+Create a queue of Node objects named queue using a LinkedList.
+
+Create an ArrayList of Integers named results to store the visited nodes' values.
+
+Add the currentNode to the queue.
+
+Use a while loop to iterate until the queue is empty: a. Remove the first element from the queue and set currentNode to the removed element. b. Add the value of currentNode to the results ArrayList. c. If currentNode has a left child, add it to the queue. d. If currentNode has a right child, add it to the queue.
+
+Return the results ArrayList.

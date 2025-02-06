@@ -1,0 +1,16 @@
+BST: Minimum Value
+Implement the minValue method in the BinarySearchTree class.
+
+The minValue method is designed to find the minimum integer value in the binary search tree (BST) starting from a specific node.
+
+In a BST, the leftmost node from any given node is always the smallest. This is due to the property of a BST, where any node's left child must have a value less than its parent, and any node's right child must have a value greater than its parent.
+
+The minValue method takes a Node as an argument, representing the root of the subtree for which you want to find the minimum value.
+
+Here is the logic you need to implement:
+
+Start at the given currentNode.
+
+Continue traversing left until you reach a node that has no left child (i.e., currentNode.left is null).
+
+Return the value of this node.

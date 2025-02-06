@@ -1,0 +1,6 @@
+HT: Item In Common ( ** Interview Question)
+Write a function itemInCommon(array1, array2) that takes two arrays as input and returns true if there is at least one common item between the two lists, false otherwise.
+
+Use a HashMap to solve the problem that creates an O(n) time complexity.
+
+You can learn more about HashMaps by clicking here.

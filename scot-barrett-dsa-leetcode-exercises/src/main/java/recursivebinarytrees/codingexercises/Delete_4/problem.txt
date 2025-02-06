@@ -1,0 +1,32 @@
+rBST: Delete
+Implement the deleteNode method in the BinarySearchTree class.
+
+The deleteNode method is designed to remove a node with a specific integer value from the binary search tree (BST).
+
+The deleteNode method consists of two parts:
+
+The public part of the method public void deleteNode(int value) (provided) takes the value to be deleted as a parameter. It calls the private part of the method private Node deleteNode(Node currentNode, int value) with the root of the BST and the deletion value as arguments.
+
+Here is the logic you need to implement:
+
+If the currentNode is null, return null. This case signifies that the tree is empty or the node to be deleted is not found in the tree.
+
+If the value is less than currentNode.value, recurse the deletion on the left subtree.
+
+If the value is more than currentNode.value, recurse the deletion on the right subtree.
+
+If the value is equal to currentNode.value, then this is the node to be deleted. In this case:
+
+a. If the node is a leaf (has no children), return null.
+
+b. If the node has a right child but no left child, return the right child. This makes the right child replace the deleted node in the BST.
+
+c. If the node has a left child but no right child, return the left child. This makes the left child replace the deleted node in the BST.
+
+d. If the node has both a right and a left child, find the minimum value in the right subtree (use the minValue method), replace the node's value with this minimum value, and then delete the minimum value node from the right subtree (to avoid duplicates).
+
+Return the currentNode.
+
+
+
+This method should update the BST such that the node with the specified value is deleted, while maintaining the properties of the BST.
