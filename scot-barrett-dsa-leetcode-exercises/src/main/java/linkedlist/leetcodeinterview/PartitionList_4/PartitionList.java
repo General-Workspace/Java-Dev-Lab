@@ -30,7 +30,7 @@ public class PartitionList {
     public void printList() {
         Node temp = head;
         while (temp != null) {
-            System.out.println(temp.value);
+            System.out.printf("%d ", temp.value);
             temp = temp.next;
         }
     }
@@ -69,5 +69,41 @@ public class PartitionList {
         length++;
     }
 
-    public void partitionList(int x) {}
+    public void partitionList(int x) {
+        Node beforeStart = null;
+        Node beforeEnd = null;
+        Node afterStart = null;
+        Node afterEnd = null;
+
+        Node current = head;
+        while (current != null) {
+            Node next = current.next;
+            current.next = null;
+            if (current.value < x) {
+                if (beforeStart == null) {
+                    beforeStart = current;
+                    beforeEnd = beforeStart;
+                } else {
+                    beforeEnd.next = current;
+                    beforeEnd = current;
+                }
+            } else {
+                if (afterStart == null) {
+                    afterStart = current;
+                    afterEnd = afterStart;
+                } else {
+                    afterEnd.next = current;
+                    afterEnd = current;
+                }
+            }
+            current = next;
+        }
+
+        if (beforeStart == null) {
+            head = afterStart;
+        } else {
+            beforeEnd.next = afterStart;
+            head = beforeStart;
+        }
+    }
 }

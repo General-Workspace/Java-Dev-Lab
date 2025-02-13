@@ -20,6 +20,7 @@ public class Main {
         ll.partitionList(5);
 
         // Print the list after partitioning
+        System.out.println();
         System.out.println("LL after partitionList:");
         ll.printList(); // Output: 3 2 1 5 8 10
 
