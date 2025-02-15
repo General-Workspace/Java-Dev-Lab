@@ -1,6 +1,8 @@
 package linkedlist.leetcodeinterview.RemoveDuplicates_5;
 
 
+import java.util.HashSet;
+
 public class LinkedList {
 
     private Node head;
@@ -82,6 +84,23 @@ public class LinkedList {
                 } else {
                     temp = temp.next;
                 }
+            }
+            current = current.next;
+        }
+    }
+
+    // using hashsets
+    public void removeDuplicatesUsingSets() {
+        HashSet<Integer> set = new java.util.HashSet<>();
+        Node current = head;
+        Node previous = null;
+        while (current != null) {
+            if (set.contains(current.value)) {
+                previous.next = current.next;
+                length--;
+            } else {
+                set.add(current.value);
+                previous = current;
             }
             current = current.next;
         }
