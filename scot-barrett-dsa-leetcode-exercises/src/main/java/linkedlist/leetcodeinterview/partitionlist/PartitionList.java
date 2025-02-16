@@ -1,4 +1,4 @@
-package linkedlist.leetcodeinterview.PartitionList_4;
+package linkedlist.leetcodeinterview.partitionlist;
 
 public class PartitionList {
     private Node head;

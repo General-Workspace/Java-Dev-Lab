@@ -1,4 +1,4 @@
-package linkedlist.leetcodeinterview.BinaryToDecimal_6;
+package linkedlist.leetcodeinterview.binarytodecimal;
 
 public class Main {
 

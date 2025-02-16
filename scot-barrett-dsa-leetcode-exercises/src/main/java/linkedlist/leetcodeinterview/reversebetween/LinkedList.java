@@ -1,8 +1,8 @@
-package linkedlist.leetcodeinterview.HasLoop_2;
+package linkedlist.leetcodeinterview.reversebetween;
 
-public class HasLoop {
+public class LinkedList {
+
     private Node head;
-    private Node tail;
     private int length;
 
     class Node {
@@ -14,19 +14,14 @@ public class HasLoop {
         }
     }
 
-    public HasLoop(int value) {
+    public LinkedList(int value) {
         Node newNode = new Node(value);
         head = newNode;
-        tail = newNode;
         length = 1;
     }
 
     public Node getHead() {
         return head;
-    }
-
-    public Node getTail() {
-        return tail;
     }
 
     public int getLength() {
@@ -36,7 +31,8 @@ public class HasLoop {
     public void printList() {
         Node temp = head;
         while (temp != null) {
-            System.out.println(temp.value);
+            //System.out.println(temp.value);
+            System.out.printf("%d ", temp.value);;
             temp = temp.next;
         }
     }
@@ -44,10 +40,8 @@ public class HasLoop {
     public void printAll() {
         if (length == 0) {
             System.out.println("Head: null");
-            System.out.println("Tail: null");
         } else {
             System.out.println("Head: " + head.value);
-            System.out.println("Tail: " + tail.value);
         }
         System.out.println("Length:" + length);
         System.out.println("\nLinked List:");
@@ -60,7 +54,6 @@ public class HasLoop {
 
     public void makeEmpty() {
         head = null;
-        tail = null;
         length = 0;
     }
 
@@ -68,25 +61,51 @@ public class HasLoop {
         Node newNode = new Node(value);
         if (length == 0) {
             head = newNode;
-            tail = newNode;
         } else {
-            tail.next = newNode;
-            tail = newNode;
+            Node current = head;
+            while (current.next != null) {
+                current = current.next;
+            }
+            current.next = newNode;
         }
         length++;
     }
 
-    public boolean hasLoop() {
-        Node slow = head;
-        Node fast = head;
-
-        while (fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-
-            if (slow == fast) return true;
+    public void reverseBetween(int m, int n) {
+        if (length == 0 || length == 1) {
+            return;
         }
 
-        return false;
+        if (m == n) {
+            return;
+        }
+
+        if (m < 0 || n < 0 || m >= length || n >= length) {
+            return;
+        }
+
+        if (m > n) {
+            return;
+        }
+
+        Node dummy = new Node(0);
+        dummy.next = head;
+        Node prev = dummy;
+        for (int i = 0; i < m - 1; i++) {
+            prev = prev.next;
+        }
+
+        Node start = prev.next;
+        Node then = start.next;
+
+        for (int i = 0; i < n - m; i++) {
+            start.next = then.next;
+            then.next = prev.next;
+            prev.next = then;
+            then = start.next;
+        }
+
+        head = dummy.next;
     }
+
 }

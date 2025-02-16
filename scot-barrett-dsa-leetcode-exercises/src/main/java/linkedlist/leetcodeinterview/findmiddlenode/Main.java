@@ -1,4 +1,4 @@
-package linkedlist.leetcodeinterview.findMiddleNode_1;
+package linkedlist.leetcodeinterview.findmiddlenode;
 
 public class Main {
     public static void main(String[] args) {

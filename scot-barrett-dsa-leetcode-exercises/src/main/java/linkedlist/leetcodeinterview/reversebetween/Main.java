@@ -1,4 +1,4 @@
-package linkedlist.leetcodeinterview.ReverseBetween_7;
+package linkedlist.leetcodeinterview.reversebetween;
 
 public class Main {
 

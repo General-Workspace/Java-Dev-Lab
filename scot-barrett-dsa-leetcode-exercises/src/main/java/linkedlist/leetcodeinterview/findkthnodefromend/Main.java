@@ -1,4 +1,4 @@
-package linkedlist.leetcodeinterview.FindKthNodeFromEnd_3;
+package linkedlist.leetcodeinterview.findkthnodefromend;
 
 public class Main {
 

@@ -1,4 +1,4 @@
-package linkedlist.leetcodeinterview.RemoveDuplicates_5;
+package linkedlist.leetcodeinterview.removeduplicates;
 
 public class Main {
 

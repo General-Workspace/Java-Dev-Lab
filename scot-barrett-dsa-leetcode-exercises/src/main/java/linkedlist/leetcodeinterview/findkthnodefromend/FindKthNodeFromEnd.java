@@ -1,6 +1,6 @@
-package linkedlist.leetcodeinterview.findMiddleNode_1;
+package linkedlist.leetcodeinterview.findkthnodefromend;
 
-public class FindMiddleNode {
+public class FindKthNodeFromEnd {
     private Node head;
     private Node tail;
 
@@ -13,7 +13,7 @@ public class FindMiddleNode {
         }
     }
 
-    public FindMiddleNode(int value) {
+    public FindKthNodeFromEnd(int value) {
         Node newNode = new Node(value);
         head = newNode;
         tail = newNode;
@@ -67,16 +67,20 @@ public class FindMiddleNode {
         }
     }
 
-    public Node findMiddleNode() {
+    public Node findKthFromEnd(int k) {
         Node slow = head;
         Node fast = head;
 
-        while (fast != null && fast.next != null) {
+        for (int i = 0; i < k; ++i) {
+            if (fast == null) return null;
+            fast = fast.next;
+        }
+
+        while (fast != null) {
             slow = slow.next;
-            fast = fast.next.next;
+            fast = fast.next;
         }
 
         return slow;
     }
 }
-

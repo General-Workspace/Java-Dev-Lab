@@ -1,4 +1,4 @@
-package linkedlist.leetcodeinterview.HasLoop_2;
+package linkedlist.leetcodeinterview.hasloop;
 
 public class Main {
 
