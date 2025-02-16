@@ -91,7 +91,7 @@ public class LinkedList {
 
     // using hashsets
     public void removeDuplicatesUsingSets() {
-        HashSet<Integer> set = new java.util.HashSet<>();
+        HashSet<Integer> set = new HashSet<>();
         Node current = head;
         Node previous = null;
         while (current != null) {
