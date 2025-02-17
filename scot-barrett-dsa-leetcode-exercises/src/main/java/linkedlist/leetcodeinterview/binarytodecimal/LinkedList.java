@@ -68,7 +68,7 @@ public class LinkedList {
         int decimal = 0;
         int power = length - 1;
         while (current != null) {
-            decimal += current.value * Math.pow(2, power);
+            decimal += (int) (current.value * Math.pow(2, power));
             current = current.next;
             power--;
         }
@@ -78,16 +78,12 @@ public class LinkedList {
     /*
     public int binaryToDecimal() {
         int num = 0;
-        int sum = 0;
         Node current = head;
-
         while (current != null) {
-            sum += num * 2 + current.value;
-            num++;
+            num = num * 2 + current.value;
             current = current.next;
         }
-
-        return sum;
+        return num;
     }
      */
 
