@@ -1,4 +1,3 @@
-/*
 No. 1
 DLL: Constructor
 Design a class called DoublyLinkedList that represents a doubly linked list.
@@ -30,8 +29,3 @@ A constructor that accepts an integer value as an argument and initializes the v
 Methods:
 
 Constructor DoublyLinkedList: a constructor that accepts an integer value as an argument, initializes a new Node object called newNode with the given value, sets both the head and tail attributes of the list to the newNode, and initializes the length attribute to 1.
- */
-package doublylinkedlist.codingexercises;
-
-public class Constructor {
-}
