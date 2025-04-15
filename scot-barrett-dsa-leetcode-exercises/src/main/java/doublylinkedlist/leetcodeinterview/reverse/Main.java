@@ -13,7 +13,7 @@ public class Main {
         System.out.println("DLL before reverse:");
         myDLL.printList();
 
-        myDLL.reverse();
+        //myDLL.reverse();
 
         System.out.println("\nDLL after reverse:");
         myDLL.printList();
